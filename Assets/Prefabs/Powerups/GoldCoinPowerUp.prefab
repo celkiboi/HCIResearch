@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4953978358135519256
+--- !u!1 &5076828690828841688
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2711597660480108325}
-  - component: {fileID: 9222452028471384623}
-  - component: {fileID: -309730782886793698}
-  - component: {fileID: 1512969373937863484}
-  - component: {fileID: -1493028102778392155}
+  - component: {fileID: 2279751732787488905}
+  - component: {fileID: 3661897646747874194}
+  - component: {fileID: 1398531497749922680}
+  - component: {fileID: 8475302896619854934}
+  - component: {fileID: 4883367942145847750}
   m_Layer: 0
   m_Name: GoldCoinPowerUp
   m_TagString: PowerUp
@@ -20,28 +20,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2711597660480108325
+--- !u!4 &2279751732787488905
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4953978358135519256}
+  m_GameObject: {fileID: 5076828690828841688}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -35.4, y: -2.1, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &9222452028471384623
+--- !u!212 &3661897646747874194
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4953978358135519256}
+  m_GameObject: {fileID: 5076828690828841688}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -87,13 +87,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &-309730782886793698
+--- !u!58 &1398531497749922680
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4953978358135519256}
+  m_GameObject: {fileID: 5076828690828841688}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -122,26 +122,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.13
---- !u!114 &1512969373937863484
+--- !u!114 &8475302896619854934
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4953978358135519256}
+  m_GameObject: {fileID: 5076828690828841688}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cba61a59f76bafc469de9cf6257cd71a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scoreModifier: 100
---- !u!114 &-1493028102778392155
+  gameManagerInstance: {fileID: 0}
+--- !u!114 &4883367942145847750
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4953978358135519256}
+  m_GameObject: {fileID: 5076828690828841688}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f61d975439bdb39429a598cd907174f2, type: 3}

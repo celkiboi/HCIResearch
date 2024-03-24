@@ -25,7 +25,9 @@ public class PlayerBehaviour : MonoBehaviour
     bool isGrounded;
     bool isDucking = false;
 
-    public static bool CanCollide { get; set; } = true;
+    public bool IsPowerUpActive { get; set; } = false;
+
+    public bool CanCollide { get; set; } = true;
 
     void Start()
     {

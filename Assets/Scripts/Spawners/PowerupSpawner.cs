@@ -6,13 +6,13 @@ public class PowerupSpawner : MonoBehaviour
 {
     [SerializeField]
     int spawnIntervalScore = 250;
-    public static bool PowerupActive { get; set; }
-    public static int LastPowerupEndScore { get; set; } = 0;
+    public bool PowerupActive { get; set; }
+    public int LastPowerupEndScore { get; set; } = 0;
 
     [SerializeField]
     Transform powerUpSpawnPoint;
 
-    public static bool AllowedToSpawn { get; set; } = true;
+    public bool AllowedToSpawn { get; set; } = true;
 
     [SerializeField]
     GameObject ghostPowerUp;
@@ -20,6 +20,13 @@ public class PowerupSpawner : MonoBehaviour
     GameObject goldCoinPowerUp;
     [SerializeField]
     GameObject silverCoinPowerUp;
+
+    [SerializeField]
+    HUDUpdater hudUpdater;
+    [SerializeField]
+    GameObject player;
+    [SerializeField]
+    GameManager gameManagerInstance;
 
     private void FixedUpdate()
     {
@@ -42,9 +49,13 @@ public class PowerupSpawner : MonoBehaviour
         }
     }
 
-    private void SpawnPowerup(GameObject powerUp)
+    private void SpawnPowerup(GameObject powerUpToSpawn)
     {
-        GameObject gameObject = Instantiate(powerUp, powerUpSpawnPoint);
-        gameObject.GetComponent<IPowerUp>().Player = GameObject.Find("Player");
+        GameObject obj = Instantiate(powerUpToSpawn, powerUpSpawnPoint.position, powerUpSpawnPoint.rotation);
+        IPowerUp powerUp = obj.GetComponent<IPowerUp>();
+        powerUp.HUDUpdater = hudUpdater;
+        powerUp.PowerupSpawner = this;
+        powerUp.Player = player;
+        powerUp.GameManagerInstance = gameManagerInstance;
     }
 }

@@ -15,6 +15,9 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField]
     Transform highSpawnPoint;
 
+    [SerializeField]
+    PlayerBehaviour playerBehaviour;
+
     private void Start()
     {
         StartCoroutine(SpawnEnemiesInIntervals(spawnIntervalSeconds));

@@ -9,15 +9,13 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     int ticksPerPoint = 10;
     int ticksPassed = 0;
-    public static int Score { get; set; } = 0;
+    public static int Score { get; private set; } = 0;
     public static bool IsFinished { get; set; }
-
     public static float GameSpeed { get; private set; }
 
     public float GameScoreSpeedModifier = 1f;
     public float BaseGameSpeed = 1f;
 
-    public static bool IsPowerUpActive { get; set; } = false;
 
     void FixedUpdate()
     {
@@ -37,6 +35,9 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
     }
 
-    
+    public void AddToScore(int value)
+    {
+        Score += value;
+    }
 
 }

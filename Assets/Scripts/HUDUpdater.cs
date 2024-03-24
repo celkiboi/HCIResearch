@@ -14,9 +14,12 @@ public class HUDUpdater : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI powerUpInfo;
 
-    public static float PowerUpFlashDuration { get; } = 0.75f;
+    public float PowerUpFlashDuration { get; } = 0.75f;
 
-    public static string PowerUpText { get; set; } = "{PowerUpText}";
+    public string PowerUpText { get; set; } = "{PowerUpText}";
+
+    [SerializeField]
+    PlayerBehaviour player;
 
     void Start()
     {
@@ -26,8 +29,8 @@ public class HUDUpdater : MonoBehaviour
 
     void FixedUpdate()
     {
-        powerUpInfo.gameObject.SetActive(GameManager.IsPowerUpActive);
-        if(GameManager.IsPowerUpActive ) 
+        powerUpInfo.gameObject.SetActive(player.IsPowerUpActive);
+        if(player.IsPowerUpActive ) 
         {
             powerUpInfo.text = PowerUpText;
         }

@@ -6,7 +6,12 @@ using UnityEngine;
 
 public class CoinPowerUp : MonoBehaviour, IPowerUp
 {
+    PlayerBehaviour player;
+
     public GameObject Player { get; set; }
+    public HUDUpdater HUDUpdater { get; set; }
+    public PowerupSpawner PowerupSpawner { get; set; }
+    public GameManager GameManagerInstance { get; set; }
 
     public string Text => $"+ {scoreModifier}";
 
@@ -15,48 +20,27 @@ public class CoinPowerUp : MonoBehaviour, IPowerUp
 
     public void Activate()
     {
-        StartCoroutine(UsePowerup(HUDUpdater.PowerUpFlashDuration));   
+        player = Player.GetComponent<PlayerBehaviour>();
+        StartCoroutine(UsePowerup(HUDUpdater.PowerUpFlashDuration));
     }
 
     IEnumerator UsePowerup(float duration)
     {
-        HidePowerUp();
-        NotifyHUD();
-        ApplyEffect();
+        this.GetComponent<Renderer>().enabled = false;
+        this.GetComponent<ProjectileBehaviour>().enabled = false;
+
+        player.IsPowerUpActive = true;
+        HUDUpdater.PowerUpText = Text;
+
+        GameManagerInstance.AddToScore(scoreModifier);
 
         yield return new WaitForSeconds(duration);
 
-        NotifyPowerUpSpawner();
-        RevertHUD();
-
-        Destroy(this.gameObject);
-    }
-
-    void HidePowerUp()
-    {
-        this.GetComponent<Renderer>().enabled = false;
-        this.GetComponent<ProjectileBehaviour>().enabled = false;
-    }
-
-    void NotifyHUD()
-    {
-        GameManager.IsPowerUpActive = true;
-        HUDUpdater.PowerUpText = Text;
-    }
-
-    void ApplyEffect()
-    {
-        GameManager.Score += scoreModifier;
-    }
-
-    private void RevertHUD()
-    {
-        GameManager.IsPowerUpActive = false;
-    }
-
-    void NotifyPowerUpSpawner()
-    {
         PowerupSpawner.AllowedToSpawn = true;
         PowerupSpawner.LastPowerupEndScore = GameManager.Score;
+
+        player.IsPowerUpActive = false;
+
+        Destroy(this.gameObject);
     }
 }

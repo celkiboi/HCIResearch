@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ProjectileDestroyer : MonoBehaviour
 {
+    [SerializeField]
+    PowerupSpawner powerupSpawner;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Obstacle"))
@@ -11,8 +14,8 @@ public class ProjectileDestroyer : MonoBehaviour
         if (collision.gameObject.CompareTag("PowerUp"))
         {
             Destroy(collision.gameObject);
-            PowerupSpawner.LastPowerupEndScore = GameManager.Score;
-            PowerupSpawner.AllowedToSpawn = true;
+            powerupSpawner.LastPowerupEndScore = GameManager.Score;
+            powerupSpawner.AllowedToSpawn = true;
         }
     }
 }
