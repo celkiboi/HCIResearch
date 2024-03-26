@@ -16,6 +16,13 @@ public class GameManager : MonoBehaviour
     public float GameScoreSpeedModifier = 1f;
     public float BaseGameSpeed = 1f;
 
+    void Start()
+    {
+        Score = 0;
+        IsFinished = false;
+        GameSpeed = BaseGameSpeed;
+        Time.timeScale = 1;
+    }
 
     void FixedUpdate()
     {

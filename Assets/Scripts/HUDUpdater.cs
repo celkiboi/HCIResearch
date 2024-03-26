@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HUDUpdater : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class HUDUpdater : MonoBehaviour
     TextMeshProUGUI yourScore;
     [SerializeField]
     TextMeshProUGUI powerUpInfo;
+    [SerializeField]
+    Button button;
 
     public float PowerUpFlashDuration { get; } = 0.75f;
 
@@ -25,6 +28,7 @@ public class HUDUpdater : MonoBehaviour
     {
         gameOver.gameObject.SetActive(false);
         yourScore.gameObject.SetActive(false);
+        button.gameObject.SetActive(false);
     }
 
     void FixedUpdate()
@@ -38,6 +42,7 @@ public class HUDUpdater : MonoBehaviour
         {
             gameOver.gameObject.SetActive(true);
             yourScore.gameObject.SetActive(true);
+            button.gameObject.SetActive(true);
 
             yourScore.text = $"Your score: {GameManager.Score}";
 
