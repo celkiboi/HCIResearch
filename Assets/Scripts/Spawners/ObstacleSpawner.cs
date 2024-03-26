@@ -29,19 +29,17 @@ public class ObstacleSpawner : MonoBehaviour
     {
         for (;;)
         {
-            if (!CanSpawn)
+            if (CanSpawn) 
             {
-                goto escape;
+                if (Random.Range(0, 2) == 0)
+                {
+                    Instantiate(lowObstaclePrefab, lowSpawnPoint);
+                }
+                else
+                {
+                    Instantiate(highObstaclePrefab, highSpawnPoint);
+                }
             }
-            if (Random.Range(0, 2) == 0)
-            {
-                Instantiate(lowObstaclePrefab, lowSpawnPoint);
-            }
-            else
-            {
-                Instantiate(highObstaclePrefab, highSpawnPoint);
-            }
-            escape:
             yield return new WaitForSeconds(spawnIntervalSeconds);
         }
     }
