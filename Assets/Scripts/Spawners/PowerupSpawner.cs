@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PowerupSpawner : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class PowerupSpawner : MonoBehaviour
     public int LastPowerupEndScore { get; set; } = 0;
 
     [SerializeField]
-    Transform powerUpSpawnPoint;
+    Transform lowSpawnPoint;
+    [SerializeField]
+    Transform highSpawnPoint;
 
     public bool AllowedToSpawn { get; set; } = true;
 
@@ -44,14 +47,25 @@ public class PowerupSpawner : MonoBehaviour
                 default:
                     return;
             }
-            SpawnPowerup(powerUpToSpawn);
+
+            Transform spawnPoint;
+            if (Random.Range(0,2) == 0)
+            {
+                spawnPoint = lowSpawnPoint;
+            }
+            else
+            {
+                spawnPoint = highSpawnPoint;
+            }
+
+            SpawnPowerup(powerUpToSpawn, spawnPoint);
             AllowedToSpawn = false;
         }
     }
 
-    private void SpawnPowerup(GameObject powerUpToSpawn)
+    private void SpawnPowerup(GameObject powerUpToSpawn, Transform spawnPoint)
     {
-        GameObject obj = Instantiate(powerUpToSpawn, powerUpSpawnPoint.position, powerUpSpawnPoint.rotation);
+        GameObject obj = Instantiate(powerUpToSpawn, spawnPoint.position, spawnPoint.rotation);
         IPowerUp powerUp = obj.GetComponent<IPowerUp>();
         powerUp.HUDUpdater = hudUpdater;
         powerUp.PowerupSpawner = this;
