@@ -851,6 +851,7 @@ MonoBehaviour:
   gameOver: {fileID: 818790556}
   yourScore: {fileID: 1374399102}
   powerUpInfo: {fileID: 187270786}
+  button: {fileID: 1861169930}
   player: {fileID: 2013005094}
 --- !u!1 &954352975
 GameObject:
