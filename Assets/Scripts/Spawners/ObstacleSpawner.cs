@@ -18,6 +18,8 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField]
     PlayerBehaviour playerBehaviour;
 
+    public bool CanSpawn = false;
+
     private void Start()
     {
         StartCoroutine(SpawnEnemiesInIntervals(spawnIntervalSeconds));
@@ -27,7 +29,10 @@ public class ObstacleSpawner : MonoBehaviour
     {
         for (;;)
         {
-            yield return new WaitForSeconds(spawnIntervalSeconds);
+            if (!CanSpawn)
+            {
+                goto escape;
+            }
             if (Random.Range(0, 2) == 0)
             {
                 Instantiate(lowObstaclePrefab, lowSpawnPoint);
@@ -36,6 +41,8 @@ public class ObstacleSpawner : MonoBehaviour
             {
                 Instantiate(highObstaclePrefab, highSpawnPoint);
             }
+            escape:
+            yield return new WaitForSeconds(spawnIntervalSeconds);
         }
     }
 }

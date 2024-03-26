@@ -15,7 +15,9 @@ public class HUDUpdater : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI powerUpInfo;
     [SerializeField]
-    Button button;
+    Button playAgain;
+    [SerializeField]
+    TextMeshProUGUI countdownText;
 
     public float PowerUpFlashDuration { get; } = 0.75f;
 
@@ -28,7 +30,7 @@ public class HUDUpdater : MonoBehaviour
     {
         gameOver.gameObject.SetActive(false);
         yourScore.gameObject.SetActive(false);
-        button.gameObject.SetActive(false);
+        playAgain.gameObject.SetActive(false);
     }
 
     void FixedUpdate()
@@ -42,7 +44,7 @@ public class HUDUpdater : MonoBehaviour
         {
             gameOver.gameObject.SetActive(true);
             yourScore.gameObject.SetActive(true);
-            button.gameObject.SetActive(true);
+            playAgain.gameObject.SetActive(true);
 
             yourScore.text = $"Your score: {GameManager.Score}";
 
@@ -57,5 +59,14 @@ public class HUDUpdater : MonoBehaviour
     public void UpdatePowerUpText(IPowerUp powerUp)
     {
         powerUpInfo.text = powerUp.Text;
+    }
+
+    public void UpdateCountDown(int secondsRemaining)
+    {
+        if (secondsRemaining <= 0)
+        {
+            countdownText.gameObject.SetActive(false);
+        }
+        countdownText.text = secondsRemaining.ToString();
     }
 }
