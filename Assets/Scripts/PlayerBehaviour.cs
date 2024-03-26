@@ -25,6 +25,10 @@ public class PlayerBehaviour : MonoBehaviour
     bool isGrounded;
     bool isDucking = false;
 
+    PolygonCollider2D polygonCollider2D;
+    Vector2[] fullSizeColliderPoints;
+    Vector2[] smallSizeColliderPoints;
+
     public bool IsPowerUpActive { get; set; } = false;
 
     public bool CanCollide { get; set; } = true;
@@ -34,6 +38,9 @@ public class PlayerBehaviour : MonoBehaviour
         jumpVector = new(0, jumpForce);
         SpriteRenderer = GetComponent<SpriteRenderer>();
         RigidBody = GetComponent<Rigidbody2D>();
+        polygonCollider2D = GetComponent<PolygonCollider2D>();
+        fullSizeColliderPoints = polygonCollider2D.points;
+        smallSizeColliderPoints = CalculateSmallColliderPoints();
     }
 
     void Update()
@@ -44,13 +51,13 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Duck();
             isDucking = true;
-        }   
+        }
         if (PlayerController.WantsToStopDucking() && isDucking)
         {
             UnDuck();
             isDucking = false;
         }
-            
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -70,9 +77,9 @@ public class PlayerBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground") && !isDucking)
         {
             SpriteRenderer.sprite = normalSprite;
-            GetComponent<BoxCollider2D>().size = normalSprite.bounds.size;
+            polygonCollider2D.points = fullSizeColliderPoints;
         }
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -93,14 +100,14 @@ public class PlayerBehaviour : MonoBehaviour
     private void Duck()
     {
         SpriteRenderer.sprite = duckingSprite;
-        GetComponent<BoxCollider2D>().size = duckingSprite.bounds.size;
+        polygonCollider2D.points = smallSizeColliderPoints;
         RigidBody.gravityScale = duckingGravityScale;
     }
 
     private void UnDuck()
     {
         SpriteRenderer.sprite = normalSprite;
-        GetComponent<BoxCollider2D>().size = normalSprite.bounds.size;
+        polygonCollider2D.points = fullSizeColliderPoints;
         RigidBody.gravityScale = 1;
     }
 
@@ -108,7 +115,27 @@ public class PlayerBehaviour : MonoBehaviour
     {
         RigidBody.AddForce(jumpVector, ForceMode2D.Impulse);
         SpriteRenderer.sprite = jumpingSprite;
-        GetComponent<BoxCollider2D>().size = jumpingSprite.bounds.size;
+        polygonCollider2D.points = smallSizeColliderPoints;
     }
 
+    private Vector2[] CalculateSmallColliderPoints()
+    {
+        Vector2[] smallColliderPoints = new Vector2[fullSizeColliderPoints.Length];
+        float colliderSizeDifference = 0.35f;
+
+        for (int i = 0; i < fullSizeColliderPoints.Length; i++)
+        {
+            Vector2 point = fullSizeColliderPoints[i];
+            if (point.y < 0)
+            {
+                smallColliderPoints[i] = new(point.x, point.y + colliderSizeDifference);
+            }
+            else if (point.y > 0)
+            {
+                smallColliderPoints[i] = new(point.x, point.y - colliderSizeDifference);
+            }
+        }
+
+        return smallColliderPoints;
+    }
 }
