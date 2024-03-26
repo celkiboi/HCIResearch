@@ -12,6 +12,6 @@ public class NavigationController : MonoBehaviour
 
     public void PlayTutorial()
     {
-        SceneManager.LoadScene("Tutorial");
+        //SceneManager.LoadScene("Tutorial");
     }
 }
