@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     HUDUpdater hudUpdater;
     [SerializeField]
     BackgroundManager backgroundManager;
+
+    public static IPlayerController PlayerController { get; set; }
 
     [SerializeField]
     int ticksPerPoint = 10;
@@ -38,6 +41,14 @@ public class GameManager : MonoBehaviour
     {
         UpdateScore();
         GameSpeed = BaseGameSpeed + Score / GameScoreSpeedModifier;
+    }
+
+    private void Update()
+    {
+        if (IsFinished && PlayerController.WantsToRestart())
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     private void UpdateScore()

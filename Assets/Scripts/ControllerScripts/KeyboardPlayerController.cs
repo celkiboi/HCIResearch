@@ -14,6 +14,11 @@ public class KeyboardPlayerController : IPlayerController
         return Input.GetKeyDown(KeyCode.UpArrow);
     }
 
+    public bool WantsToRestart()
+    {
+        return Input.GetKeyDown(KeyCode.R);
+    }
+
     public bool WantsToStopDucking()
     {
         return Input.GetKeyUp(KeyCode.DownArrow);
