@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     ObstacleSpawner obstacleSpawner;
     [SerializeField]
     HUDUpdater hudUpdater;
+    [SerializeField]
+    BackgroundManager backgroundManager;
 
     [SerializeField]
     int ticksPerPoint = 10;
@@ -65,6 +67,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         hudUpdater.UpdateCountDown(0);
         obstacleSpawner.CanSpawn = true;
+        backgroundManager.StartBackgroundMovement();
         hasStarted = true;
     }
 
