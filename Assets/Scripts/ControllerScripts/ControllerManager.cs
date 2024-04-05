@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class ControllerManager : MonoBehaviour
 {
-    readonly KeyboardPlayerController KeyboardController = new();
-    readonly XboxPlayerController XboxController = new();
+    public static IPlayerController SelectedController { get; set; }
 
     void Start()
     {
-        //PlayerBehaviour.PlayerController = KeyboardController;
-        PlayerBehaviour.PlayerController = XboxController;
-        GameManager.PlayerController = XboxController;
+        PlayerBehaviour.PlayerController = SelectedController;
+        GameManager.PlayerController = SelectedController;
     }
 }

@@ -18,6 +18,8 @@ public class HUDUpdater : MonoBehaviour
     Button playAgain;
     [SerializeField]
     TextMeshProUGUI countdownText;
+    [SerializeField]
+    Button mainMenu;
 
     public float PowerUpFlashDuration { get; } = 0.75f;
 
@@ -31,6 +33,7 @@ public class HUDUpdater : MonoBehaviour
         gameOver.gameObject.SetActive(false);
         yourScore.gameObject.SetActive(false);
         playAgain.gameObject.SetActive(false);
+        mainMenu.gameObject.SetActive(false);
     }
 
     void FixedUpdate()
@@ -45,6 +48,7 @@ public class HUDUpdater : MonoBehaviour
             gameOver.gameObject.SetActive(true);
             yourScore.gameObject.SetActive(true);
             playAgain.gameObject.SetActive(true);
+            mainMenu.gameObject.SetActive(true);
 
             yourScore.text = $"Your score: {GameManager.Score}";
 

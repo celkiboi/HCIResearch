@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class KeyboardPlayerController : IPlayerController
 {
+    public static IPlayerController Instance = new KeyboardPlayerController();
+
+    private KeyboardPlayerController() { }
+
     public bool WantsToDuck()
     {
         return Input.GetKeyDown(KeyCode.DownArrow);

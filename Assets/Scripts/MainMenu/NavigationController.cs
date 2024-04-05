@@ -5,13 +5,32 @@ using UnityEngine.SceneManagement;
 
 public class NavigationController : MonoBehaviour
 {
+    [SerializeField]
+    Canvas initial;
+    [SerializeField]
+    Canvas input;
+
+    public void Start()
+    {
+        initial.gameObject.SetActive(true);
+        input.gameObject.SetActive(false);
+    }
+
     public void Play()
     {
+        initial.gameObject.SetActive(false);
+        input.gameObject.SetActive(true);
+    }
+
+    public void PlayKeyboard()
+    {
+        ControllerManager.SelectedController = KeyboardPlayerController.Instance;
         SceneManager.LoadScene("GameLevel");
     }
 
-    public void PlayTutorial()
+    public void PlayController()
     {
-        //SceneManager.LoadScene("Tutorial");
+        ControllerManager.SelectedController = XboxPlayerController.Instance;
+        SceneManager.LoadScene("GameLevel");
     }
 }

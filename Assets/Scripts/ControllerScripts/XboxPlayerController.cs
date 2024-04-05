@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class XboxPlayerController : IPlayerController
 {
+    public static IPlayerController Instance = new XboxPlayerController();
+
+    private XboxPlayerController() { }
+
     public bool WantsToDuck()
     {
         return Input.GetKeyDown(KeyCode.JoystickButton5);
