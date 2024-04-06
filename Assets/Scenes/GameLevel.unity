@@ -3368,7 +3368,6 @@ MonoBehaviour:
   jumpForce: 10
   isGrounded: 1
   isDucking: 0
-  isJumping: 0
 --- !u!212 &2013005095
 SpriteRenderer:
   m_ObjectHideFlags: 0

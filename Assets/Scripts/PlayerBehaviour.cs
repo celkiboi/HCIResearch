@@ -25,8 +25,6 @@ public class PlayerBehaviour : MonoBehaviour
     bool isGrounded;
     [SerializeField]
     bool isDucking = false;
-    [SerializeField]
-    bool isJumping = false;
 
     PolygonCollider2D polygonCollider2D;
     Vector2[] fullSizeColliderPoints;
@@ -50,21 +48,26 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (GameManager.IsFinished) return;
         if (PlayerController.WantsToJump() && isGrounded)
-        {
             Jump();
-        }
+
             
         if (PlayerController.WantsToDuck() && !isDucking)
         {
             Duck();
             isDucking = true;
         }
-        if (!PlayerController.WantsToDuck() && isDucking) 
+        if (!PlayerController.WantsToDuck() && isDucking)
         {
             UnDuck();
             isDucking = false;
         }
+        
+    }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ground"))
+            isGrounded = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -81,15 +84,10 @@ public class PlayerBehaviour : MonoBehaviour
             polygonCollider2D.points = fullSizeColliderPoints;
         }
 
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-            isJumping = false;
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {    
+    {
         if (!CanCollide) return;
 
         if (collision.gameObject.CompareTag("PowerUp"))
@@ -112,18 +110,22 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void UnDuck()
     {
-        SpriteRenderer.sprite = isJumping ? jumpingSprite : normalSprite;
+        SpriteRenderer.sprite = isGrounded ? normalSprite : jumpingSprite;
         polygonCollider2D.points = fullSizeColliderPoints;
         RigidBody.gravityScale = 1;
     }
 
     private void Jump()
     {
-        isJumping = true;
+        // Note to future self
+        // sometimes the game engine bugs and queues two jumps
+        // this will prevent this stupid double jump
+        if (RigidBody.velocity.y != 0) return;
+
         isGrounded = false;
+        RigidBody.AddForce(jumpVector, ForceMode2D.Impulse);
         SpriteRenderer.sprite = jumpingSprite;
         polygonCollider2D.points = smallSizeColliderPoints;
-        RigidBody.AddForce(jumpVector, ForceMode2D.Impulse);
     }
 
     private Vector2[] CalculateSmallColliderPoints()
