@@ -10,7 +10,6 @@ public class KeyboardPlayerController : IPlayerController
 
     public bool WantsToDuck()
     {
-        //return Input.GetKeyDown(KeyCode.DownArrow);
         return Input.GetKey(KeyCode.DownArrow);
     }
 
@@ -31,6 +30,6 @@ public class KeyboardPlayerController : IPlayerController
 
     public bool WantsToStopDucking()
     {
-        return false; //Input.GetKeyUp(KeyCode.DownArrow);
+        return false;
     }
 }
