@@ -20,7 +20,7 @@ public class KeyboardPlayerController : IPlayerController
 
     public bool WantsToJump()
     {
-        return Input.GetKeyDown(KeyCode.UpArrow);
+        return Input.GetKey(KeyCode.UpArrow);
     }
 
     public bool WantsToRestart()
