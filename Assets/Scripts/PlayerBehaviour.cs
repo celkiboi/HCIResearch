@@ -45,6 +45,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.IsFinished) return;
         if (PlayerController.WantsToJump() && isGrounded)
             Jump();
         if (PlayerController.WantsToDuck() && !isDucking)
