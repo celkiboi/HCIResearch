@@ -3279,6 +3279,8 @@ MonoBehaviour:
   jumpingSprite: {fileID: 21300000, guid: a725fb8a6b604e14fbecfd7c3ec4ffe7, type: 3}
   jumpForce: 10
   isGrounded: 1
+  isDucking: 0
+  isJumping: 0
 --- !u!212 &2013005095
 SpriteRenderer:
   m_ObjectHideFlags: 0
