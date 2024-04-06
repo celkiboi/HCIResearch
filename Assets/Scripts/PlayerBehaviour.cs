@@ -111,7 +111,7 @@ public class PlayerBehaviour : MonoBehaviour
     private void UnDuck()
     {
         SpriteRenderer.sprite = isGrounded ? normalSprite : jumpingSprite;
-        polygonCollider2D.points = fullSizeColliderPoints;
+        polygonCollider2D.points = isGrounded ? fullSizeColliderPoints : smallSizeColliderPoints;
         RigidBody.gravityScale = 1;
     }
 
