@@ -8,22 +8,36 @@ public class XboxPlayerController : IPlayerController
 
     private XboxPlayerController() { }
 
+    readonly float deadzone = 0.2f;
+
     public bool WantsToDuck()
     {
-        return Input.GetKeyDown(KeyCode.JoystickButton5);
-    }
-    public bool WantsToJump()
-    {
-        return Input.GetKeyDown(KeyCode.JoystickButton4);
+        float value = Input.GetAxis("DPadVertical");
+
+        return value < -deadzone;
     }
 
-    public bool WantsToRestart()
+    public bool WantsToGoMainMenu()
     {
         return Input.GetKeyDown(KeyCode.JoystickButton1);
     }
 
+    public bool WantsToJump()
+    {
+        float value = Input.GetAxis("DPadVertical");
+
+        return value > deadzone;
+    }
+
+    public bool WantsToRestart()
+    {
+        return Input.GetKeyDown(KeyCode.JoystickButton0);
+    }
+
     public bool WantsToStopDucking()
     {
-        return Input.GetKeyUp(KeyCode.JoystickButton5);
+        float value = Input.GetAxis("DPadVertical");
+
+        return value > -deadzone;
     }
 }

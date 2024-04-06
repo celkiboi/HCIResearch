@@ -49,6 +49,10 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+        if (IsFinished && PlayerController.WantsToGoMainMenu())
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 
     private void UpdateScore()

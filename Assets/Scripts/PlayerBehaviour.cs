@@ -113,6 +113,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Jump()
     {
+        isGrounded = false;
         RigidBody.AddForce(jumpVector, ForceMode2D.Impulse);
         SpriteRenderer.sprite = jumpingSprite;
         polygonCollider2D.points = smallSizeColliderPoints;

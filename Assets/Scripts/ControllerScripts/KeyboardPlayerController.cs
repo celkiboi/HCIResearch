@@ -13,6 +13,11 @@ public class KeyboardPlayerController : IPlayerController
         return Input.GetKeyDown(KeyCode.DownArrow);
     }
 
+    public bool WantsToGoMainMenu()
+    {
+        return Input.GetKeyDown(KeyCode.M);
+    }
+
     public bool WantsToJump()
     {
         return Input.GetKeyDown(KeyCode.UpArrow);

@@ -11,4 +11,6 @@ public interface IPlayerController
     bool WantsToStopDucking();
 
     bool WantsToRestart();
+
+    bool WantsToGoMainMenu();
 }

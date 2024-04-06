@@ -25,12 +25,14 @@ public class NavigationController : MonoBehaviour
     public void PlayKeyboard()
     {
         ControllerManager.SelectedController = KeyboardPlayerController.Instance;
+        InputThumbnailManager.SelectedThumbnails = KeyboardThumbnailFactory.Instance;
         SceneManager.LoadScene("GameLevel");
     }
 
     public void PlayController()
     {
         ControllerManager.SelectedController = XboxPlayerController.Instance;
+        InputThumbnailManager.SelectedThumbnails = ControllerThumbnailFactory.Instance;
         SceneManager.LoadScene("GameLevel");
     }
 }
