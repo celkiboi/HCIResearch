@@ -77,12 +77,12 @@ public class BackgroundManager : MonoBehaviour
 
         if (hasStarted)
         {
-            background0.transform.Translate(paralaxSpeed * Vector2.left);
-            background1.transform.Translate(paralaxSpeed * Vector2.left);
-            background2.transform.Translate(paralaxSpeed * Vector2.left);
-            ground0.transform.Translate(GameManager.GameSpeed * Vector2.left);
-            ground1.transform.Translate(GameManager.GameSpeed * Vector2.left);
-            ground2.transform.Translate(GameManager.GameSpeed * Vector2.left);
+            background0.transform.Translate(paralaxSpeed * Time.deltaTime * Vector2.left);
+            background1.transform.Translate(paralaxSpeed * Time.deltaTime * Vector2.left);
+            background2.transform.Translate(paralaxSpeed * Time.deltaTime * Vector2.left);
+            ground0.transform.Translate(GameManager.GameSpeed * Time.deltaTime * Vector2.left);
+            ground1.transform.Translate(GameManager.GameSpeed * Time.deltaTime * Vector2.left);
+            ground2.transform.Translate(GameManager.GameSpeed * Time.deltaTime * Vector2.left);
         }
     }
 
