@@ -16,6 +16,7 @@ public class ObstacleSpawner : MonoBehaviour
     Transform highSpawnPoint;
 
     readonly Transform[] spawnPoints = new Transform[3];
+    readonly GameObject[] obstacles = new GameObject[3];
 
     [SerializeField]
     PlayerBehaviour playerBehaviour;
@@ -27,6 +28,10 @@ public class ObstacleSpawner : MonoBehaviour
         spawnPoints[0] = lowSpawnPoint;
         spawnPoints[1] = middleSpawnPoint;
         spawnPoints[2] = highSpawnPoint;
+
+        obstacles[0] = lowObstaclePrefab;
+        obstacles[1] = lowObstaclePrefab;
+        obstacles[2] = highObstaclePrefab;
     }
 
     private void FixedUpdate()
@@ -34,7 +39,7 @@ public class ObstacleSpawner : MonoBehaviour
         if (CanSpawn) 
         {
             int choice = Random.Range(0, 3);
-            Instantiate(lowObstaclePrefab, spawnPoints[choice]);
+            Instantiate(obstacles[choice], spawnPoints[choice]);
             CanSpawn = false;
         }
     }
