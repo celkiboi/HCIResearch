@@ -142,7 +142,7 @@ public class PlayerBehaviour : MonoBehaviour
     private Vector2[] CalculateSmallColliderPoints()
     {
         Vector2[] smallColliderPoints = new Vector2[fullSizeColliderPoints.Length];
-        float colliderSizeDifference = 0.35f;
+        float colliderSizeDifference = 0.4f;
 
         for (int i = 0; i < fullSizeColliderPoints.Length; i++)
         {

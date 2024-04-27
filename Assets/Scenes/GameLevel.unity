@@ -731,7 +731,7 @@ Transform:
   m_GameObject: {fileID: 613217347}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15, y: -0.1, z: 0}
+  m_LocalPosition: {x: 15, y: -0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1099,6 +1099,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 715147546}
   m_CullTransparentMesh: 1
+--- !u!1 &749142575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 749142576}
+  m_Layer: 3
+  m_Name: TallObstacleSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &749142576
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749142575}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15, y: 1.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &782927368
 GameObject:
   m_ObjectHideFlags: 0
@@ -1735,10 +1766,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lowObstaclePrefab: {fileID: 3690251111598772010, guid: f98d6aff96ca7884d9aaf75531a9d4eb, type: 3}
+  mediumObstaclePrefab: {fileID: 4927833331627648960, guid: 612c894d4ba17a840baab42f1fedc353, type: 3}
   highObstaclePrefab: {fileID: 7377785609285201025, guid: 6dcf9517384e0494cbbe66ac7990424d, type: 3}
+  tallObstaclePrefab: {fileID: 7385795157760910968, guid: db6f5ebaef1e12341814f6f3c52e113a, type: 3}
   lowSpawnPoint: {fileID: 837981630}
   middleSpawnPoint: {fileID: 613217348}
   highSpawnPoint: {fileID: 112223829}
+  tallSpawnPoint: {fileID: 749142576}
   playerBehaviour: {fileID: 0}
   CanSpawn: 0
 --- !u!4 &954352977
@@ -3933,5 +3967,6 @@ SceneRoots:
   - {fileID: 112223829}
   - {fileID: 613217348}
   - {fileID: 837981630}
+  - {fileID: 749142576}
   - {fileID: 1286555684}
   - {fileID: 2107771999}
