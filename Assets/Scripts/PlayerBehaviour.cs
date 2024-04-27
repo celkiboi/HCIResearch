@@ -34,6 +34,16 @@ public class PlayerBehaviour : MonoBehaviour
 
     public bool CanCollide { get; set; } = true;
 
+    float glideHeight;
+
+    public bool CanGlide 
+    { 
+        get 
+        {
+            return this.transform.position.y >= glideHeight;
+        } 
+    }
+
     void Start()
     {
         jumpVector = new(0, jumpForce);
@@ -42,6 +52,7 @@ public class PlayerBehaviour : MonoBehaviour
         polygonCollider2D = GetComponent<PolygonCollider2D>();
         fullSizeColliderPoints = polygonCollider2D.points;
         smallSizeColliderPoints = CalculateSmallColliderPoints();
+        glideHeight = this.transform.position.y;
     }
 
     void Update()

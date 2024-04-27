@@ -20,13 +20,15 @@ public class HUDUpdater : MonoBehaviour
     TextMeshProUGUI countdownText;
     [SerializeField]
     Button mainMenu;
+    [SerializeField]
+    GameObject glideDown;
+
+    [SerializeField]
+    PlayerBehaviour player;
 
     public float PowerUpFlashDuration { get; } = 0.75f;
 
     public string PowerUpText { get; set; } = "{PowerUpText}";
-
-    [SerializeField]
-    PlayerBehaviour player;
 
     void Start()
     {
@@ -58,6 +60,11 @@ public class HUDUpdater : MonoBehaviour
         {
             score.text = $"Score: {GameManager.Score}";
         }
+    }
+
+    private void Update()
+    {
+        glideDown.SetActive(player.CanGlide);
     }
 
     public void UpdatePowerUpText(IPowerUp powerUp)

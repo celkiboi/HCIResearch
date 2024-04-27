@@ -15,11 +15,14 @@ public class InputThumbnailManager : MonoBehaviour
     Image restart;
     [SerializeField]
     Image mainMenu;
+    [SerializeField]
+    Image glideDown;
 
     public void Start()
     {
         jump.sprite = SelectedThumbnails.JumpImage;
         duck.sprite = SelectedThumbnails.DuckImage;
+        glideDown.sprite = SelectedThumbnails.DuckImage;
         restart.sprite = SelectedThumbnails.RestartImage;
         mainMenu.sprite = SelectedThumbnails.MainMenuImage;
     }
