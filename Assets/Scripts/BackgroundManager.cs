@@ -32,7 +32,7 @@ public class BackgroundManager : MonoBehaviour
             background1.transform.position.y,
             background1.transform.position.z);
 
-        if (WebCamManager.ShouldRun)
+        if (WebCamProcessor.ShouldRun)
         {
             Color backgroundColor = background0.GetComponent<SpriteRenderer>().color;
             Color newColor = new(backgroundColor.r, backgroundColor.g, backgroundColor.b, 0.75f);

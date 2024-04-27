@@ -7,20 +7,20 @@ using UnityEngine.SceneManagement;
 public class MainLevelHUDActions : MonoBehaviour
 {
     [SerializeField]
-    WebCamManager webCamManager;
+    WebCamProcessor webCamProcessor;
     public void PlayAgain()
     {
-        if(WebCamManager.ShouldRun)
+        if(WebCamProcessor.ShouldRun)
         {
-            webCamManager.Stop();
-            WebCamManager.ShouldRun = true;
+            webCamProcessor.Stop();
+            WebCamProcessor.ShouldRun = true;
         }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MainMenu()
     {
-        webCamManager.Stop();
+        webCamProcessor.Stop();
         SceneManager.LoadScene("MainMenu");
     }
 }
