@@ -17,6 +17,8 @@ public class WebCamProcessor : WebCamera
     {
         if (!ShouldRun)
         {
+            if (webCamTexture != null)
+                webCamTexture.Stop();
             this.gameObject.SetActive(false);
         }
     }
@@ -41,6 +43,7 @@ public class WebCamProcessor : WebCamera
     public void Stop()
     {
         ShouldRun = false;
-        webCamTexture.Stop();
+        if (webCamTexture != null)
+            webCamTexture.Stop();
     }
 }
