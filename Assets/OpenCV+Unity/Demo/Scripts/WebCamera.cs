@@ -20,7 +20,7 @@ namespace OpenCvSharp.Demo
 		public GameObject Surface;
 
 		private Nullable<WebCamDevice> webCamDevice = null;
-		private WebCamTexture webCamTexture = null;
+		protected WebCamTexture webCamTexture = null;
 		private Texture2D renderedTexture = null;
 
 		/// <summary>

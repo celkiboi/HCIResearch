@@ -58,7 +58,8 @@ public class FaceDetector : MonoBehaviour
         {
             yield return new WaitForSeconds(1.0f / timesPerSecond);
             frame = webCamProcessor.Image;
-            faces = cascade.DetectMultiScale(frame, 1.1, 2, HaarDetectionType.ScaleImage);
+            if (frame != null) 
+                faces = cascade.DetectMultiScale(frame, 1.1, 2, HaarDetectionType.ScaleImage);
         }
     }
 }

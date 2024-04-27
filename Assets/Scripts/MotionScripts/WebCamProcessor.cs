@@ -41,5 +41,6 @@ public class WebCamProcessor : WebCamera
     public void Stop()
     {
         ShouldRun = false;
+        webCamTexture.Stop();
     }
 }
