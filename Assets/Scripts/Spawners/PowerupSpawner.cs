@@ -13,6 +13,8 @@ public class PowerupSpawner : MonoBehaviour
     [SerializeField]
     Transform lowSpawnPoint;
     [SerializeField]
+    Transform middleSpawnPoint;
+    [SerializeField]
     Transform highSpawnPoint;
 
     public bool AllowedToSpawn { get; set; } = true;
@@ -31,6 +33,15 @@ public class PowerupSpawner : MonoBehaviour
     [SerializeField]
     GameManager gameManagerInstance;
 
+    readonly Transform[] spawnPoints = new Transform[3];
+
+    private void Start()
+    {
+        spawnPoints[0] = lowSpawnPoint;
+        spawnPoints[1] = middleSpawnPoint;
+        spawnPoints[2] = highSpawnPoint;
+    }
+
     private void FixedUpdate()
     {
         if ((GameManager.Score - LastPowerupEndScore) > spawnIntervalScore && AllowedToSpawn)
@@ -48,17 +59,8 @@ public class PowerupSpawner : MonoBehaviour
                     return;
             }
 
-            Transform spawnPoint;
-            if (Random.Range(0,2) == 0)
-            {
-                spawnPoint = lowSpawnPoint;
-            }
-            else
-            {
-                spawnPoint = highSpawnPoint;
-            }
-
-            SpawnPowerup(powerUpToSpawn, spawnPoint);
+            int choice = Random.Range(0, 3);
+            SpawnPowerup(powerUpToSpawn, spawnPoints[choice]);
             AllowedToSpawn = false;
         }
     }

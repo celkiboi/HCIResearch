@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    [SerializeField] 
-    float spawnIntervalSeconds = 1.5f;
     [SerializeField]
     GameObject lowObstaclePrefab;
     [SerializeField]
@@ -13,7 +11,11 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField]
     Transform lowSpawnPoint;
     [SerializeField]
+    Transform middleSpawnPoint;
+    [SerializeField]
     Transform highSpawnPoint;
+
+    readonly Transform[] spawnPoints = new Transform[3];
 
     [SerializeField]
     PlayerBehaviour playerBehaviour;
@@ -22,25 +24,18 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(SpawnEnemiesInIntervals(spawnIntervalSeconds));
+        spawnPoints[0] = lowSpawnPoint;
+        spawnPoints[1] = middleSpawnPoint;
+        spawnPoints[2] = highSpawnPoint;
     }
 
-    IEnumerator SpawnEnemiesInIntervals(float spawnIntervalSeconds)
+    private void FixedUpdate()
     {
-        for (;;)
+        if (CanSpawn) 
         {
-            if (CanSpawn) 
-            {
-                if (Random.Range(0, 2) == 0)
-                {
-                    Instantiate(lowObstaclePrefab, lowSpawnPoint);
-                }
-                else
-                {
-                    Instantiate(highObstaclePrefab, highSpawnPoint);
-                }
-            }
-            yield return new WaitForSeconds(spawnIntervalSeconds);
+            int choice = Random.Range(0, 3);
+            Instantiate(lowObstaclePrefab, spawnPoints[choice]);
+            CanSpawn = false;
         }
     }
 }
