@@ -31,6 +31,15 @@ public class BackgroundManager : MonoBehaviour
             (background0.transform.position.x - xOffset / 2,
             background1.transform.position.y,
             background1.transform.position.z);
+
+        if (WebCamManager.ShouldRun)
+        {
+            Color backgroundColor = background0.GetComponent<SpriteRenderer>().color;
+            Color newColor = new(backgroundColor.r, backgroundColor.g, backgroundColor.b, 0.75f);
+            background0.GetComponent<SpriteRenderer>().color = newColor;
+            background1.GetComponent<SpriteRenderer>().color = newColor;
+            background2.GetComponent<SpriteRenderer>().color = newColor;
+        }
     }
 
     void FixedUpdate()

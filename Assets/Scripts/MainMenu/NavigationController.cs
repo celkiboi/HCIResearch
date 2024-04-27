@@ -35,4 +35,12 @@ public class NavigationController : MonoBehaviour
         InputThumbnailManager.SelectedThumbnails = ControllerThumbnailFactory.Instance;
         SceneManager.LoadScene("GameLevel");
     }
+
+    public void PlayFaceDetection()
+    {
+        WebCamManager.ShouldRun = true;
+        ControllerManager.SelectedController = FaceDetectionController.Instance;
+        InputThumbnailManager.SelectedThumbnails = ControllerThumbnailFactory.Instance;
+        SceneManager.LoadScene("GameLevel");
+    }
 }

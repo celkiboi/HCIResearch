@@ -22,6 +22,8 @@ public class HUDUpdater : MonoBehaviour
     Button mainMenu;
     [SerializeField]
     GameObject glideDown;
+    [SerializeField]
+    TextMeshProUGUI faceHeight;
 
     [SerializeField]
     PlayerBehaviour player;
@@ -60,6 +62,8 @@ public class HUDUpdater : MonoBehaviour
         {
             score.text = $"Score: {GameManager.Score}";
         }
+
+        faceHeight.text = FaceDetector.Height.ToString();
     }
 
     private void Update()
