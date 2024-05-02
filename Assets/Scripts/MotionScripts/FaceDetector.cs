@@ -22,8 +22,8 @@ public class FaceDetector : MonoBehaviour
     {
         if (faces.Length >= 1)
         {
-            Debug.Log($"{faces[0].Height}");
-            lastHeight = faces[0].Height;
+            lastHeight = faces[0].Center.Y;
+            Debug.Log(lastHeight);
         }
         return lastHeight;
     }

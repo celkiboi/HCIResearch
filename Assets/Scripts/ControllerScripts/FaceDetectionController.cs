@@ -10,9 +10,12 @@ public class FaceDetectionController : IPlayerController
     private FaceDetectionController() 
     { }
 
+    readonly int duckThreshold = 280;
+    readonly int jumpThreshold = 80;
+
     public bool WantsToDuck()
     {
-        return Input.GetKey(KeyCode.DownArrow);
+        return FaceDetector.Height >= duckThreshold;
     }
 
     public bool WantsToGoMainMenu()
@@ -22,7 +25,7 @@ public class FaceDetectionController : IPlayerController
 
     public bool WantsToJump()
     {
-        return Input.GetKey(KeyCode.UpArrow);
+        return FaceDetector.Height <= jumpThreshold;
     }
 
     public bool WantsToRestart()
