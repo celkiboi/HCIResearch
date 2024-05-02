@@ -70,7 +70,14 @@ namespace OpenCvSharp.Demo
 					// read device params and make conversion map
 					ReadTextureConversionParameters();
 
-					webCamTexture.Play();
+					// HCIReasearch - see if we can make all webcams behave eaqually
+					// also lowers resolution, making it easier for us to do our algos
+
+					webCamTexture.requestedHeight = 360;
+					webCamTexture.requestedWidth = 640;
+
+					if (WebCamProcessor.ShouldRun) // HCIResearch -- fix camera indicator flashing on non camera levels
+						webCamTexture.Play();
 				}
 				else
 				{
