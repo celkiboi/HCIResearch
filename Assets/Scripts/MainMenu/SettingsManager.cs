@@ -6,7 +6,7 @@ using TMPro;
 
 public class SettingsManager : MonoBehaviour
 {
-    public static int FaceDetectionFrequency { get; private set; } = 6;
+    public static int FaceDetectionFrequency { get; private set; } = 18;
 
     [SerializeField]
     TextMeshProUGUI faceDetectionFrequencyText;
