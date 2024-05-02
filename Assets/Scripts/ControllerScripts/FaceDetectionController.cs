@@ -11,7 +11,7 @@ public class FaceDetectionController : IPlayerController
     { }
 
     readonly int duckThreshold = 280;
-    readonly int jumpThreshold = 80;
+    readonly int jumpThreshold = 160;
 
     public bool WantsToDuck()
     {

@@ -29,6 +29,8 @@ public class ObstacleSpawner : MonoBehaviour
 
     public bool CanSpawn = false;
 
+    readonly System.Random random = new();
+
     private void Start()
     {
         spawnPoints[0] = lowSpawnPoint;
@@ -42,11 +44,21 @@ public class ObstacleSpawner : MonoBehaviour
         obstacles[3] = tallObstaclePrefab;
     }
 
+    /*
+     * The odds for spawning an obstacle for jumping is 50%
+     * Since all remaining obstacles can be ducked under, their total spawn rate is 50%
+     */
     private void FixedUpdate()
     {
         if (CanSpawn) 
         {
-            int choice = Random.Range(0, 4);
+            if (random.Next(0, 2) == 0) 
+            {
+                Instantiate(obstacles[0], spawnPoints[0]);
+                CanSpawn = false;
+                return;
+            }
+            int choice = random.Next(1, 4);
             Instantiate(obstacles[choice], spawnPoints[choice]);
             CanSpawn = false;
         }
