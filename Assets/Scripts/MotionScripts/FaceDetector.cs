@@ -41,6 +41,7 @@ public class FaceDetector : MonoBehaviour
             "haarcascade/haarcascade_frontalface_default.xml");
         cascade = new CascadeClassifier(xmlFilePath);
         frame = webCamProcessor.Image;
+        detectTimesPerSecond = SettingsManager.FaceDetectionFrequency;
         StartCoroutine(DoPeriodicFacialDetection(detectTimesPerSecond));
     }
 

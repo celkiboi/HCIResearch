@@ -9,17 +9,35 @@ public class NavigationController : MonoBehaviour
     Canvas initial;
     [SerializeField]
     Canvas input;
+    [SerializeField]
+    Canvas settings;
 
     public void Start()
     {
         initial.gameObject.SetActive(true);
         input.gameObject.SetActive(false);
+        settings.gameObject.SetActive(false);
     }
 
     public void Play()
     {
-        initial.gameObject.SetActive(false);
         input.gameObject.SetActive(true);
+        settings.gameObject.SetActive(false);
+        initial.gameObject.SetActive(false);
+    }
+
+    public void GoToSettings()
+    {
+        input.gameObject.SetActive(false);
+        initial.gameObject.SetActive(false);
+        settings.gameObject.SetActive(true);
+    }
+
+    public void GoBack()
+    {
+        initial.gameObject.SetActive(true);
+        input.gameObject.SetActive(false);
+        settings.gameObject.SetActive(false);
     }
 
     public void PlayKeyboard()
