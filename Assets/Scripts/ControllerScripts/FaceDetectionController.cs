@@ -7,15 +7,21 @@ public class FaceDetectionController : IPlayerController
 {
     public static IPlayerController Instance = new FaceDetectionController();
 
-    private FaceDetectionController() 
+    private FaceDetectionController()
     { }
 
-    readonly int duckThreshold = 280;
-    readonly int jumpThreshold = 160;
+    public static int DuckThreshold { get; private set; } = 280;
+    public static int JumpThreshold { get; private set; } = 160;
+
+    public static void SetThreshold(int duck, int jump)
+    {
+        JumpThreshold = jump;
+        DuckThreshold = duck;
+    }
 
     public bool WantsToDuck()
     {
-        return FaceDetector.Height >= duckThreshold;
+        return FaceDetector.Height >= DuckThreshold;
     }
 
     public bool WantsToGoMainMenu()
@@ -25,7 +31,7 @@ public class FaceDetectionController : IPlayerController
 
     public bool WantsToJump()
     {
-        return FaceDetector.Height <= jumpThreshold;
+        return FaceDetector.Height <= JumpThreshold;
     }
 
     public bool WantsToRestart()
