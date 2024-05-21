@@ -13,9 +13,6 @@ public class FaceDetector : MonoBehaviour
     public OpenCvSharp.Rect[] faces;
     Mat frame;
 
-    [SerializeField]
-    int detectTimesPerSecond = 10;
-
     CascadeClassifier cascade;
 
     float GetFaceHeight()
@@ -31,7 +28,7 @@ public class FaceDetector : MonoBehaviour
 
     void Start()
     {
-        if (!WebCamProcessor.ShouldRun)
+        if (!WebCamProcessor.ShouldRun || ControllerManager.SelectedController != FaceDetectionController.Instance)
         {
             this.gameObject.SetActive(false);
             return;
@@ -41,7 +38,7 @@ public class FaceDetector : MonoBehaviour
             "haarcascade/haarcascade_frontalface_default.xml");
         cascade = new CascadeClassifier(xmlFilePath);
         frame = webCamProcessor.Image;
-        detectTimesPerSecond = SettingsManager.FaceDetectionFrequency;
+        int detectTimesPerSecond = SettingsManager.FaceDetectionFrequency;
         StartCoroutine(DoPeriodicFacialDetection(detectTimesPerSecond));
     }
 

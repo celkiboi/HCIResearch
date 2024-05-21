@@ -11,7 +11,7 @@ public class WebCamProcessor : WebCamera
     public static bool ShouldRun { get; set; } = false;
 
     [SerializeField]
-    FaceDetector detector;
+    FaceDetector faceDetector;
 
     private void Start()
     {
@@ -27,9 +27,18 @@ public class WebCamProcessor : WebCamera
     {
         Image = OpenCvSharp.Unity.TextureToMat(input);
 
-        if (detector.faces.Length > 0 ) 
+        if (ControllerManager.SelectedController == FaceDetectionController.Instance)
         {
-            Image.Rectangle(detector.faces[0], new Scalar(0, 250, 0), 2);
+            if (faceDetector.faces.Length > 0)
+            {
+                Image.Rectangle(faceDetector.faces[0], new Scalar(0, 250, 0), 2);
+            }
+        }
+        else if (ControllerManager.SelectedController == ColorDetectionController.Instance) 
+        {
+            Point detectCoords = new(ColorDetector.Width, ColorDetector.Height);
+            OpenCvSharp.Rect detectionRect = new(detectCoords, new(5, 5));
+            Image.Rectangle(detectionRect, new Scalar(0, 250, 0), 2);
         }
 
         if (output == null)

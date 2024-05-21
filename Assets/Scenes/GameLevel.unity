@@ -2326,7 +2326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Surface: {fileID: 800398064}
-  detector: {fileID: 1619343484}
+  faceDetector: {fileID: 1619343484}
 --- !u!114 &1224662518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3335,7 +3335,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faces: []
-  detectTimesPerSecond: 30
   webCamProcessor: {fileID: 1224662517}
 --- !u!4 &1619343485
 Transform:
@@ -3866,6 +3865,55 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1951502542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1951502544}
+  - component: {fileID: 1951502543}
+  m_Layer: 0
+  m_Name: ColorDetector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1951502543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951502542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36639e490a4a7b54c853cb85625a0ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WantedColor: {r: 1, g: 0.8862745, b: 0.59607846, a: 1}
+  colorTolerance: {x: 0.05, y: 0.05, z: 0.05}
+  cameraImage: {fileID: 800398065}
+  detectTimesPerSecond: 10
+  webCamProcessor: {fileID: 1224662517}
+--- !u!4 &1951502544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951502542}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 457.2227, y: 394.71164, z: 13.647131}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2002801870
 GameObject:
   m_ObjectHideFlags: 0
@@ -4345,3 +4393,4 @@ SceneRoots:
   - {fileID: 2107771999}
   - {fileID: 1619343485}
   - {fileID: 1224662521}
+  - {fileID: 1951502544}

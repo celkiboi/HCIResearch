@@ -63,4 +63,12 @@ public class NavigationController : MonoBehaviour
         InputThumbnailManager.SelectedThumbnails = ControllerThumbnailFactory.Instance;
         SceneManager.LoadScene("GameLevel");
     }
+
+    public void PlayColorDetection()
+    {
+        WebCamProcessor.ShouldRun = true;
+        ControllerManager.SelectedController = ColorDetectionController.Instance;
+        InputThumbnailManager.SelectedThumbnails = ControllerThumbnailFactory.Instance;
+        SceneManager.LoadScene("GameLevel");
+    }
 }
