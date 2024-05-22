@@ -3895,7 +3895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WantedColor: {r: 1, g: 0.8862745, b: 0.59607846, a: 1}
-  colorTolerance: {x: 0.05, y: 0.05, z: 0.05}
+  colorTolerance: {x: 0.1, y: 0.1, z: 0.1}
   cameraImage: {fileID: 800398065}
   detectTimesPerSecond: 10
   webCamProcessor: {fileID: 1224662517}

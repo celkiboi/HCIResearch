@@ -16,7 +16,7 @@ public class ColorDetector : MonoBehaviour
     float lastHeight;
     float lastWidth;
     public int NumberOfPixelsToSkip { get; set; } = 4;
-    public Color WantedColor;
+    public static Color WantedColor;
     [SerializeField]
     Vector3 colorTolerance;
 
@@ -24,7 +24,7 @@ public class ColorDetector : MonoBehaviour
     RawImage cameraImage;
 
     [SerializeField]
-    int detectTimesPerSecond = 20;
+    int detectTimesPerSecond = 50;
 
     private void Start()
     {
@@ -34,6 +34,8 @@ public class ColorDetector : MonoBehaviour
             return;
         }
 
+        WantedColor = MenuCameraColorSelector.SelectedColor;
+        NumberOfPixelsToSkip = SettingsManager.ColorDetectionPixelsToSkip;
         StartCoroutine(DoPeriodicColorDetection(detectTimesPerSecond));
     }
 

@@ -11,12 +11,22 @@ public class NavigationController : MonoBehaviour
     Canvas input;
     [SerializeField]
     Canvas settings;
+    [SerializeField]
+    Canvas info;
+    [SerializeField]
+    Canvas selectColor;
+
+    [SerializeField]
+    MenuCameraColorSelector colorSelector;
 
     public void Start()
     {
         initial.gameObject.SetActive(true);
         input.gameObject.SetActive(false);
         settings.gameObject.SetActive(false);
+        info.gameObject.SetActive(true);
+        selectColor.gameObject.SetActive(false);
+        colorSelector.Stop();
     }
 
     public void Play()
@@ -24,6 +34,9 @@ public class NavigationController : MonoBehaviour
         input.gameObject.SetActive(true);
         settings.gameObject.SetActive(false);
         initial.gameObject.SetActive(false);
+        info.gameObject.SetActive(true);
+        selectColor.gameObject.SetActive(false);
+        colorSelector.Stop();
     }
 
     public void GoToSettings()
@@ -31,6 +44,9 @@ public class NavigationController : MonoBehaviour
         input.gameObject.SetActive(false);
         initial.gameObject.SetActive(false);
         settings.gameObject.SetActive(true);
+        info.gameObject.SetActive(false);
+        selectColor.gameObject.SetActive(false);
+        colorSelector.Stop();
     }
 
     public void GoBack()
@@ -38,6 +54,19 @@ public class NavigationController : MonoBehaviour
         initial.gameObject.SetActive(true);
         input.gameObject.SetActive(false);
         settings.gameObject.SetActive(false);
+        info.gameObject.SetActive(true);
+        selectColor.gameObject.SetActive(false);
+        colorSelector.Stop();
+    }
+
+    public void GoToSelectColor()
+    {
+        initial.gameObject.SetActive(false);
+        input.gameObject.SetActive(false);
+        settings.gameObject.SetActive(false);
+        info.gameObject.SetActive(false);
+        selectColor.gameObject.SetActive(true);
+        colorSelector.KickStart();
     }
 
     public void PlayKeyboard()

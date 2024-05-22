@@ -21,6 +21,9 @@ public class WebCamProcessor : WebCamera
                 webCamTexture.Stop();
             this.gameObject.SetActive(false);
         }
+
+        webCamTexture.requestedWidth = 640;
+        webCamTexture.requestedHeight = 480;
     }
 
     protected override bool ProcessTexture(WebCamTexture input, ref Texture2D output)
