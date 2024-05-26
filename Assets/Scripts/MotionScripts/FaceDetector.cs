@@ -3,28 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FaceDetector : MonoBehaviour
 {
-    public static float Height { get; private set; }
-
-    float lastHeight = 0;
+    public static float Height { get; private set; } = 0;
     public OpenCvSharp.Rect[] faces;
     Mat frame;
-
     CascadeClassifier cascade;
-
-    float GetFaceHeight()
-    {
-        if (faces.Length >= 1)
-        {
-            lastHeight = faces[0].Center.Y;
-            //Debug.Log(lastHeight);
-        }
-        return lastHeight;
-    }
-
 
     void Start()
     {
@@ -44,7 +31,8 @@ public class FaceDetector : MonoBehaviour
 
     private void Update()
     {
-        Height = GetFaceHeight();
+        if (faces.Length >= 1)
+            Height = faces[0].Center.Y;
     }
 
     [SerializeField]
