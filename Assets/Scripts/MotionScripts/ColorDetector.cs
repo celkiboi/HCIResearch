@@ -13,8 +13,6 @@ public class ColorDetector : MonoBehaviour
     public static float Height { get; private set; }
     public static float Width { get; private set; }
     Mat frame;
-    float lastHeight;
-    float lastWidth;
     public int NumberOfPixelsToSkip { get; set; } = 4;
     public static Color WantedColor;
     [SerializeField]
@@ -39,12 +37,6 @@ public class ColorDetector : MonoBehaviour
         StartCoroutine(DoPeriodicColorDetection(detectTimesPerSecond));
     }
 
-    private void Update()
-    {
-        Height = lastHeight;
-        Width = lastWidth;
-    }
-
     [SerializeField]
     WebCamProcessor webCamProcessor;
 
@@ -60,8 +52,8 @@ public class ColorDetector : MonoBehaviour
                 (bool success, int height, int width) result = FindColorHeight(cameraTexture);
                 if (result.success)
                 {
-                    lastHeight = result.height;
-                    lastWidth = result.width;
+                    Height = result.height;
+                    Width = result.width;
                 }
             }
         }   
