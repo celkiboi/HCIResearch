@@ -15,8 +15,8 @@ public class ColorDetector : MonoBehaviour
     Mat frame;
     public int NumberOfPixelsToSkip { get; set; } = 1;
     public static Color WantedColor;
-    [SerializeField]
-    Vector3 colorTolerance;
+
+    static Vector3 colorTolerance = new(0.1f, 0.1f, 0.1f);
 
     [SerializeField]
     RawImage cameraImage;
@@ -80,12 +80,31 @@ public class ColorDetector : MonoBehaviour
         return (false, 0, 0);
     }
 
-
     bool CompareWithTolerance(Color current, Color wanted, Vector3 tolerance)
     {
         return Math.Abs(current.r - wanted.r) < tolerance.x
             && Math.Abs(current.g - wanted.g) < tolerance.y
             && Math.Abs(current.b - wanted.b) < tolerance.z;
+    }
+
+    public static void SetColorToleranceRed(float red)
+    {
+        colorTolerance.x = red; 
+    }
+
+    public static void SetColorToleranceGreen(float green) 
+    {
+        colorTolerance.y = green;
+    }
+
+    public static void SetColorToleranceBlue(float blue) 
+    {
+        colorTolerance.z = blue;
+    }
+
+    public static Vector3 GetColorTolerance()
+    {
+        return colorTolerance;
     }
 
 }
