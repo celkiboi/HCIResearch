@@ -15,6 +15,12 @@ This videogame was made to research human computer interaction in videogames. It
 - using facial recognition, position you face (either by jumping and ducking, or by changing your sitting stance) and watch the player respond to your actions
 - using color detection, choose the color of the object that you wish to move around, and see the player respond
 
+## Gameplay
+
+### MOVEMENT
+The movement in this game is simple: you can **jump** and **duck**. <br>
+**IMPORTANT**  You can duck ***while*** jumping to fall faster!
+
 ### MULTIPLE OBSTACLES
 - Rocket -> this obstacle won't do anything to you unless you choose to jump at it. It's purpose is simply to confuse you
 - Candles -> this obstacle will punish you if you don't jump in time
@@ -24,20 +30,22 @@ This videogame was made to research human computer interaction in videogames. It
 ### MULTIPLE POWERUPS
 - Blue coin -> this powerup will grant you 50 SCORE
 - Gold coin -> this powerup will grant you 100 SCORE
-- Fog circle -> this powerup will grant you temprorary invicibility to obstacles
+- Fog circle -> this powerup will grant you temporary invicibility to obstacles
 
 ## SETTINGS GUIDE
 
-### FACIAL DETECTION
-
-#### Face Detecion Frequency
-This slider allows you to change the frequency of facial detection. Beware, that higher values result in higher CPU usage, while lower result in smaller precision and higher input lag
+### Common settings
 
 #### Jump threshold
 This slider allows you to change the threshold for jumping. The values closer to 0 are higher on the camera while higher values are lower on the camera (I.E the top row of pixels on your camera has value 0)
 
 #### Duck threshold
 This slider allows you to change the threshold for ducking. The values closer to 0 are higher on the camera while higher values are lower on the camera (I.E the top row of pixels on your camera has value 0)
+
+### FACIAL DETECTION
+
+#### Face Detecion Frequency
+This slider allows you to change the frequency of facial detection. Beware, that higher values result in higher CPU usage, while lower result in smaller precision and higher input lag
 
 ### COLOR DETECTION
 
@@ -46,4 +54,7 @@ This value allows you to change how many pixels are skipped. Imagine your camera
 
 #### Select Color
 This submenu will allow you to choose which color to track for color detection gamemode. Recomended object are sticky notes, colorful pencils... any monocolor object with unique colors and enough surface
+
+#### Color Tolerance
+This setting allows you to adjust the tolerance used for color detection in 3 channels: Red, Green, and Blue. Tolerance of 0.8 to 0.125 works the best, with 0.1 yielding the best results in testing
 
