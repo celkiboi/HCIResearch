@@ -7,7 +7,7 @@ using TMPro;
 public class SettingsManager : MonoBehaviour
 {
     public static int FaceDetectionFrequency { get; private set; } = 18;
-    public static int ColorDetectionPixelsToSkip { get; private set; } = 4;
+    public static int ColorDetectionPixelsToSkip { get; private set; } = 1;
 
     [SerializeField]
     TextMeshProUGUI faceDetectionFrequencyText;
@@ -37,11 +37,17 @@ public class SettingsManager : MonoBehaviour
         FaceDetectionController.SetThreshold(
             duck: FaceDetectionController.DuckThreshold,
             jump: (int)value);
+        ColorDetectionController.SetThreshold(
+            duck: FaceDetectionController.DuckThreshold,
+            jump: (int)value);
     }
 
     public void OnDuckThresholdChanged(float value) 
     {
         FaceDetectionController.SetThreshold(
+            jump: FaceDetectionController.JumpThreshold,
+            duck: (int)value);
+        ColorDetectionController.SetThreshold(
             jump: FaceDetectionController.JumpThreshold,
             duck: (int)value);
     }

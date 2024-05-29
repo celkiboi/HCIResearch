@@ -12,8 +12,8 @@ public class ColorDetectionController : IPlayerController
 
     private ColorDetectionController() 
     { }
-    public static int DuckThreshold { get; private set; } = 330;
-    public static int JumpThreshold { get; private set; } = 200;
+    public static int DuckThreshold { get; private set; } = 280;
+    public static int JumpThreshold { get; private set; } = 160;
     public static void SetThreshold(int duck, int jump)
     {
         JumpThreshold = jump;

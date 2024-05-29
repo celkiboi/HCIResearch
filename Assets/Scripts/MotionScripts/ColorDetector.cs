@@ -13,7 +13,7 @@ public class ColorDetector : MonoBehaviour
     public static float Height { get; private set; }
     public static float Width { get; private set; }
     Mat frame;
-    public int NumberOfPixelsToSkip { get; set; } = 4;
+    public int NumberOfPixelsToSkip { get; set; } = 1;
     public static Color WantedColor;
     [SerializeField]
     Vector3 colorTolerance;
