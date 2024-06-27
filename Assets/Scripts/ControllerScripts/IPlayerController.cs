@@ -8,8 +8,6 @@ public interface IPlayerController
 
     bool WantsToDuck();
 
-    bool WantsToStopDucking();
-
     bool WantsToRestart();
 
     bool WantsToGoMainMenu();

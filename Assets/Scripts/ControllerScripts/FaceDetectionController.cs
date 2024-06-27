@@ -38,11 +38,5 @@ public class FaceDetectionController : IPlayerController
     {
         return Input.GetKeyDown(KeyCode.R);
     }
-
-    // TODO: This is depreceted, delete it in the interface when refactoring
-    public bool WantsToStopDucking()
-    {
-        return false;
-    }
 }
 

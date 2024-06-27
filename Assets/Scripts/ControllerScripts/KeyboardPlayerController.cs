@@ -27,9 +27,4 @@ public class KeyboardPlayerController : IPlayerController
     {
         return Input.GetKeyDown(KeyCode.R);
     }
-
-    public bool WantsToStopDucking()
-    {
-        return false;
-    }
 }

@@ -33,11 +33,4 @@ public class XboxPlayerController : IPlayerController
     {
         return Input.GetKeyDown(KeyCode.JoystickButton0);
     }
-
-    public bool WantsToStopDucking()
-    {
-        float value = Input.GetAxis("DPadVertical");
-
-        return value > -deadzone;
-    }
 }
