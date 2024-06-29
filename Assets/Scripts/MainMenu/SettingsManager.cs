@@ -47,21 +47,21 @@ public class SettingsManager : MonoBehaviour
 
     public void OnJumpThresholdChanged(float value)
     {
-        FaceDetectionController.SetThreshold(
-            duck: FaceDetectionController.DuckThreshold,
+        FaceDetectionController.Instance.SetThreshold(
+            duck: FaceDetectionController.Instance.DuckThreshold,
             jump: (int)value);
-        ColorDetectionController.SetThreshold(
-            duck: FaceDetectionController.DuckThreshold,
+        ColorDetectionController.Instance.SetThreshold(
+            duck: FaceDetectionController.Instance.DuckThreshold,
             jump: (int)value);
     }
 
     public void OnDuckThresholdChanged(float value) 
     {
-        FaceDetectionController.SetThreshold(
-            jump: FaceDetectionController.JumpThreshold,
+        FaceDetectionController.Instance.SetThreshold(
+            jump: FaceDetectionController.Instance.JumpThreshold,
             duck: (int)value);
-        ColorDetectionController.SetThreshold(
-            jump: FaceDetectionController.JumpThreshold,
+        ColorDetectionController.Instance.SetThreshold(
+            jump: FaceDetectionController.Instance.JumpThreshold,
             duck: (int)value);
     }
 
@@ -88,8 +88,8 @@ public class SettingsManager : MonoBehaviour
     {
         faceDetectionFrequencyText.text = FaceDetectionFrequency.ToString() + " Hz";
         colorDetectionPixelsText.text = ColorDetectionPixelsToSkip.ToString() + " Pixels";
-        jumpThresholdText.text = FaceDetectionController.JumpThreshold.ToString();
-        duckThresholdText.text = FaceDetectionController.DuckThreshold.ToString();
+        jumpThresholdText.text = FaceDetectionController.Instance.JumpThreshold.ToString();
+        duckThresholdText.text = FaceDetectionController.Instance.DuckThreshold.ToString();
     }
 
     private void Start()

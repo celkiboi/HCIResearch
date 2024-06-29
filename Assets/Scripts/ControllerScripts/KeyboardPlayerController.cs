@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KeyboardPlayerController : IPlayerController
 {
-    public static IPlayerController Instance = new KeyboardPlayerController();
+    public static KeyboardPlayerController Instance = new();
 
     private KeyboardPlayerController() { }
 

@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class FaceDetectionController : IPlayerController
 {
-    public static IPlayerController Instance = new FaceDetectionController();
+    public static FaceDetectionController Instance = new();
 
     private FaceDetectionController()
     { }
 
-    public static int DuckThreshold { get; private set; } = 280;
-    public static int JumpThreshold { get; private set; } = 160;
+    public int DuckThreshold { get; private set; } = 280;
+    public int JumpThreshold { get; private set; } = 160;
 
-    public static void SetThreshold(int duck, int jump)
+    public void SetThreshold(int duck, int jump)
     {
         JumpThreshold = jump;
         DuckThreshold = duck;

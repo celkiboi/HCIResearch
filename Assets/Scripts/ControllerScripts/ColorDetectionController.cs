@@ -8,13 +8,13 @@ using UnityEngine;
 
 public class ColorDetectionController : IPlayerController
 {
-    public static IPlayerController Instance = new ColorDetectionController();
+    public static ColorDetectionController Instance = new();
 
     private ColorDetectionController() 
     { }
-    public static int DuckThreshold { get; private set; } = 280;
-    public static int JumpThreshold { get; private set; } = 160;
-    public static void SetThreshold(int duck, int jump)
+    public int DuckThreshold { get; private set; } = 280;
+    public int JumpThreshold { get; private set; } = 160;
+    public void SetThreshold(int duck, int jump)
     {
         JumpThreshold = jump;
         DuckThreshold = duck;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class XboxPlayerController : IPlayerController
 {
-    public static IPlayerController Instance = new XboxPlayerController();
+    public static XboxPlayerController Instance = new();
 
     private XboxPlayerController() { }
 
