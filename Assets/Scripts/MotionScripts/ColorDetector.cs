@@ -12,7 +12,6 @@ public class ColorDetector : MonoBehaviour
 {
     public static float Height { get; private set; }
     public static float Width { get; private set; }
-    Mat frame;
     public int NumberOfPixelsToSkip { get; set; } = 1;
     public static Color WantedColor;
 
@@ -45,7 +44,7 @@ public class ColorDetector : MonoBehaviour
         for (;;)
         {
             yield return new WaitForSeconds(1.0f / timesPerSecond);
-            frame = webCamProcessor.Image;
+            Mat frame = webCamProcessor.Image;
             if (frame != null)
             {
                 Texture2D cameraTexture = cameraImage.texture as Texture2D;

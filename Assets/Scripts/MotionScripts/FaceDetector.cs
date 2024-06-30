@@ -10,7 +10,6 @@ public class FaceDetector : MonoBehaviour
 {
     public static float Height { get; private set; } = 0;
     public OpenCvSharp.Rect[] Faces { get; private set; }
-    Mat frame;
     CascadeClassifier cascade;
     [SerializeField]
     WebCamProcessor webCamProcessor;
@@ -26,7 +25,6 @@ public class FaceDetector : MonoBehaviour
         string xmlFilePath = Path.Combine(Application.streamingAssetsPath,
             "haarcascade/haarcascade_frontalface_default.xml");
         cascade = new CascadeClassifier(xmlFilePath);
-        frame = webCamProcessor.Image;
         // empty array to prevent NullException on the first rendered frame
         Faces = new OpenCvSharp.Rect[0];
         int detectTimesPerSecond = SettingsManager.FaceDetectionFrequency;
@@ -38,7 +36,7 @@ public class FaceDetector : MonoBehaviour
         for (;;)
         {
             yield return new WaitForSeconds(1.0f / timesPerSecond);
-            frame = webCamProcessor.Image;
+            Mat frame = webCamProcessor.Image;
             if (frame != null) 
                 Faces = cascade.DetectMultiScale(frame, 1.1, 2, HaarDetectionType.ScaleImage);
             if (Faces.Length >= 1)
