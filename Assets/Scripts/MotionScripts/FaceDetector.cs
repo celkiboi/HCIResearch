@@ -27,10 +27,11 @@ public class FaceDetector : MonoBehaviour
             "haarcascade/haarcascade_frontalface_default.xml");
         cascade = new CascadeClassifier(xmlFilePath);
         frame = webCamProcessor.Image;
+        // empty array to prevent NullException on the first rendered frame
+        Faces = new OpenCvSharp.Rect[0];
         int detectTimesPerSecond = SettingsManager.FaceDetectionFrequency;
         StartCoroutine(DoPeriodicFacialDetection(detectTimesPerSecond));
     }
-
 
     IEnumerator DoPeriodicFacialDetection(int timesPerSecond)
     {
