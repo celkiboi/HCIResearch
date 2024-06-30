@@ -9,9 +9,11 @@ using UnityEngine;
 public class FaceDetector : MonoBehaviour
 {
     public static float Height { get; private set; } = 0;
-    public OpenCvSharp.Rect[] faces;
+    public OpenCvSharp.Rect[] Faces { get; private set; }
     Mat frame;
     CascadeClassifier cascade;
+    [SerializeField]
+    WebCamProcessor webCamProcessor;
 
     void Start()
     {
@@ -29,14 +31,6 @@ public class FaceDetector : MonoBehaviour
         StartCoroutine(DoPeriodicFacialDetection(detectTimesPerSecond));
     }
 
-    private void Update()
-    {
-        if (faces.Length >= 1)
-            Height = faces[0].Center.Y;
-    }
-
-    [SerializeField]
-    WebCamProcessor webCamProcessor;
 
     IEnumerator DoPeriodicFacialDetection(int timesPerSecond)
     {
@@ -45,7 +39,9 @@ public class FaceDetector : MonoBehaviour
             yield return new WaitForSeconds(1.0f / timesPerSecond);
             frame = webCamProcessor.Image;
             if (frame != null) 
-                faces = cascade.DetectMultiScale(frame, 1.1, 2, HaarDetectionType.ScaleImage);
+                Faces = cascade.DetectMultiScale(frame, 1.1, 2, HaarDetectionType.ScaleImage);
+            if (Faces.Length >= 1)
+                Height = Faces[0].Center.Y;
         }
     }
 }

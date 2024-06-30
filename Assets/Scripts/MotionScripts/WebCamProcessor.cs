@@ -32,9 +32,9 @@ public class WebCamProcessor : WebCamera
 
         if (ControllerManager.SelectedController == FaceDetectionController.Instance)
         {
-            if (faceDetector.faces.Length > 0)
+            if (faceDetector.Faces.Length > 0)
             {
-                Image.Rectangle(faceDetector.faces[0], new Scalar(0, 250, 0), 2);
+                Image.Rectangle(faceDetector.Faces[0], new Scalar(0, 250, 0), 2);
             }
         }
         else if (ControllerManager.SelectedController == ColorDetectionController.Instance) 
