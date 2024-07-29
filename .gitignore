@@ -67,3 +67,6 @@ sysinfo.txt
 
 # Builds
 *.apk
+
+# settings
+settings.json
