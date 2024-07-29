@@ -15,9 +15,13 @@ public class NavigationController : MonoBehaviour
     Canvas info;
     [SerializeField]
     Canvas selectColor;
+    [SerializeField]
+    Canvas setThreshold;
 
     [SerializeField]
     MenuCameraColorSelector colorSelector;
+    [SerializeField]
+    ThresholdCameraSelector thresholdSelector;
 
     public void Start()
     {
@@ -26,7 +30,9 @@ public class NavigationController : MonoBehaviour
         settings.gameObject.SetActive(false);
         info.gameObject.SetActive(true);
         selectColor.gameObject.SetActive(false);
+        setThreshold.gameObject.SetActive(false);
         colorSelector.Stop();
+        thresholdSelector.Stop();
     }
 
     public void Play()
@@ -36,7 +42,9 @@ public class NavigationController : MonoBehaviour
         initial.gameObject.SetActive(false);
         info.gameObject.SetActive(true);
         selectColor.gameObject.SetActive(false);
+        setThreshold.gameObject.SetActive(false);
         colorSelector.Stop();
+        thresholdSelector.Stop();
     }
 
     public void GoToSettings()
@@ -46,7 +54,9 @@ public class NavigationController : MonoBehaviour
         settings.gameObject.SetActive(true);
         info.gameObject.SetActive(false);
         selectColor.gameObject.SetActive(false);
+        setThreshold.gameObject.SetActive(false);
         colorSelector.Stop();
+        thresholdSelector.Stop();
     }
 
     public void GoBack()
@@ -56,7 +66,9 @@ public class NavigationController : MonoBehaviour
         settings.gameObject.SetActive(false);
         info.gameObject.SetActive(true);
         selectColor.gameObject.SetActive(false);
+        setThreshold.gameObject.SetActive(false);
         colorSelector.Stop();
+        thresholdSelector.Stop();
     }
 
     public void GoToSelectColor()
@@ -66,7 +78,20 @@ public class NavigationController : MonoBehaviour
         settings.gameObject.SetActive(false);
         info.gameObject.SetActive(false);
         selectColor.gameObject.SetActive(true);
+        thresholdSelector.Stop();
         colorSelector.KickStart();
+    }
+
+    public void GoSetThreshold()
+    {
+        initial.gameObject.SetActive(false);
+        input.gameObject.SetActive(false);
+        settings.gameObject.SetActive(false);
+        info.gameObject.SetActive(false);
+        selectColor.gameObject.SetActive(false);
+        setThreshold.gameObject.SetActive(true);
+        colorSelector.Stop();
+        thresholdSelector.KickStart();
     }
 
     public void PlayKeyboard()

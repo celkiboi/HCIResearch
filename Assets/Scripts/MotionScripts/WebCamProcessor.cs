@@ -43,6 +43,15 @@ public class WebCamProcessor : WebCamera
             OpenCvSharp.Rect detectionRect = new(detectCoords, new(5, 5));
             Image.Rectangle(detectionRect, new Scalar(0, 250, 0), 2);
         }
+        if (ThresholdCameraSelector.DisplayThresholdBars)
+        {
+            Point jumpCoords = new(0, FaceDetectionController.Instance.JumpThreshold);
+            Point duckCoords = new(0, FaceDetectionController.Instance.DuckThreshold);
+            OpenCvSharp.Rect jumpLine = new(jumpCoords, new(Image.Width, 1));
+            OpenCvSharp.Rect duckLine = new(duckCoords, new(Image.Width, 1));
+            Image.Rectangle(jumpLine, new Scalar(250, 16, 242), 2);
+            Image.Rectangle(duckLine, new Scalar(250, 239, 16), 2);
+        }
 
         if (output == null)
             output = OpenCvSharp.Unity.MatToTexture(Image);

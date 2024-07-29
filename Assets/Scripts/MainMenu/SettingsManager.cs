@@ -11,10 +11,6 @@ public class SettingsManager : MonoBehaviour
 
     [SerializeField]
     TextMeshProUGUI faceDetectionFrequencyText;
-    [SerializeField]
-    TextMeshProUGUI jumpThresholdText;
-    [SerializeField]
-    TextMeshProUGUI duckThresholdText;
 
     [SerializeField]
     TextMeshProUGUI colorDetectionPixelsText;
@@ -45,26 +41,6 @@ public class SettingsManager : MonoBehaviour
         ColorDetectionPixelsToSkip = parsedValue;
     }
 
-    public void OnJumpThresholdChanged(float value)
-    {
-        FaceDetectionController.Instance.SetThreshold(
-            duck: FaceDetectionController.Instance.DuckThreshold,
-            jump: (int)value);
-        ColorDetectionController.Instance.SetThreshold(
-            duck: FaceDetectionController.Instance.DuckThreshold,
-            jump: (int)value);
-    }
-
-    public void OnDuckThresholdChanged(float value) 
-    {
-        FaceDetectionController.Instance.SetThreshold(
-            jump: FaceDetectionController.Instance.JumpThreshold,
-            duck: (int)value);
-        ColorDetectionController.Instance.SetThreshold(
-            jump: FaceDetectionController.Instance.JumpThreshold,
-            duck: (int)value);
-    }
-
     public void OnColorToleranceRedChanged(float value)
     {
         ColorDetector.SetColorToleranceRed(value);
@@ -88,8 +64,6 @@ public class SettingsManager : MonoBehaviour
     {
         faceDetectionFrequencyText.text = FaceDetectionFrequency.ToString() + " Hz";
         colorDetectionPixelsText.text = ColorDetectionPixelsToSkip.ToString() + " Pixels";
-        jumpThresholdText.text = FaceDetectionController.Instance.JumpThreshold.ToString();
-        duckThresholdText.text = FaceDetectionController.Instance.DuckThreshold.ToString();
     }
 
     private void Start()

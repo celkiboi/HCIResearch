@@ -76,7 +76,9 @@ namespace OpenCvSharp.Demo
 					webCamTexture.requestedHeight = 360;
 					webCamTexture.requestedWidth = 640;
 
-					if (WebCamProcessor.ShouldRun || MenuCameraColorSelector.ShouldRun) // HCIResearch -- fix camera indicator flashing on non camera levels
+					if (WebCamProcessor.ShouldRun 
+						|| MenuCameraColorSelector.ShouldRun 
+						|| ThresholdCameraSelector.ShouldRun) // HCIResearch -- fix camera indicator flashing on non camera levels
 						webCamTexture.Play();
 				}
 				else
