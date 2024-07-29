@@ -31,8 +31,8 @@ public class ThresholdCameraSelector : WebCamera
     [SerializeField]
     Toggle displayThresholdBarsToggle;
 
-    static int jumpThreshold = 280;
-    static int duckThreshold = 160;
+    static int jumpThreshold = 160;
+    static int duckThreshold = 280;
 
     private void Start()
     {
@@ -48,7 +48,6 @@ public class ThresholdCameraSelector : WebCamera
 
         OnJumpThresholdChanged(jumpThreshold);
         OnDuckThresholdChanged(duckThreshold);
-
         jumpThresholdSlider.value = jumpThreshold;
         duckThresholdSlider.value = duckThreshold;
         displayThresholdBarsToggle.isOn = DisplayThresholdBars;
