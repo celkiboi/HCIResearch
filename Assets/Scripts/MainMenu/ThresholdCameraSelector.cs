@@ -12,6 +12,7 @@ using TMPro;
 public class ThresholdCameraSelector : WebCamera
 {
     public static bool ShouldRun { get; set; } = false;
+    [Settings("displayThresholdBars")]
     public static bool DisplayThresholdBars = true; // used only for gameplay
 
     public Mat Image;
@@ -31,7 +32,9 @@ public class ThresholdCameraSelector : WebCamera
     [SerializeField]
     Toggle displayThresholdBarsToggle;
 
+    [Settings("jumpThreshold")]
     static int jumpThreshold = 160;
+    [Settings("duckThreshold")]
     static int duckThreshold = 280;
 
     private void Start()
@@ -46,6 +49,11 @@ public class ThresholdCameraSelector : WebCamera
         webCamTexture.requestedWidth = 640;
         webCamTexture.requestedHeight = 480;
 
+        DoInitialHUDStuff();
+    }
+
+    private void DoInitialHUDStuff()
+    {
         OnJumpThresholdChanged(jumpThreshold);
         OnDuckThresholdChanged(duckThreshold);
         jumpThresholdSlider.value = jumpThreshold;
@@ -86,6 +94,7 @@ public class ThresholdCameraSelector : WebCamera
     public void KickStart()
     {
         webCamTexture.Play();
+        DoInitialHUDStuff();
     }
 
     public void OnJumpThresholdChanged(float value)

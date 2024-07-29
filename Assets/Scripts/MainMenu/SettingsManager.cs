@@ -6,8 +6,13 @@ using TMPro;
 
 public class SettingsManager : MonoBehaviour
 {
-    public static int FaceDetectionFrequency { get; private set; } = 18;
-    public static int ColorDetectionPixelsToSkip { get; private set; } = 1;
+    public static int FaceDetectionFrequency { get => faceDetectionFrequency; private set => faceDetectionFrequency = value; }
+    public static int ColorDetectionPixelsToSkip { get => colorDetectionPixelsToSkip; private set => colorDetectionPixelsToSkip = value; }
+
+    [Settings("faceDetectionFrequency")]
+    private static int faceDetectionFrequency = 18;
+    [Settings("colorDetectionPixelsToSkip")]
+    private static int colorDetectionPixelsToSkip = 1;
 
     [SerializeField]
     TextMeshProUGUI faceDetectionFrequencyText;
@@ -27,6 +32,7 @@ public class SettingsManager : MonoBehaviour
     Slider colorToleranceSliderGreen;
     [SerializeField]
     Slider colorToleranceSliderBlue;
+    
 
     public void OnFaceDetectionFrequencyChanged(float value)
     {

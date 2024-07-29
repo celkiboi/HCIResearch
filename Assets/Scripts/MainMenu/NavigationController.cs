@@ -23,6 +23,8 @@ public class NavigationController : MonoBehaviour
     [SerializeField]
     ThresholdCameraSelector thresholdSelector;
 
+    GameSettingsFile gameSettingsFile = GameSettingsFile.Instance;
+
     public void Start()
     {
         initial.gameObject.SetActive(true);
@@ -69,6 +71,7 @@ public class NavigationController : MonoBehaviour
         setThreshold.gameObject.SetActive(false);
         colorSelector.Stop();
         thresholdSelector.Stop();
+        GameSettingsFile.Instance.Save();
     }
 
     public void GoToSelectColor()

@@ -15,7 +15,8 @@ public class ColorDetector : MonoBehaviour
     public int NumberOfPixelsToSkip { get; set; } = 1;
     public static Color WantedColor;
 
-    static Vector3 colorTolerance = new(0.1f, 0.1f, 0.1f);
+    [Settings("colorTolerance")]
+    public static Vector3 colorTolerance = new(0.1f, 0.1f, 0.1f);
 
     [SerializeField]
     RawImage cameraImage;

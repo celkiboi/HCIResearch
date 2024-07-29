@@ -12,7 +12,10 @@ public class MenuCameraColorSelector : WebCamera
 {
     public static bool ShouldRun { get; set; } = false;
 
-    public static Color SelectedColor { get; private set; } = new(0, 0, 0);
+    public static Color SelectedColor { get => selectedColor; private set => selectedColor = value; }
+
+    [Settings("selectedColor")]
+    private static Color selectedColor = new(0, 0, 0);
 
     public Mat Image;
     [SerializeField]
