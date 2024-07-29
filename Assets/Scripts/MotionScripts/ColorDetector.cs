@@ -16,7 +16,7 @@ public class ColorDetector : MonoBehaviour
     public static Color WantedColor;
 
     [Settings("colorTolerance")]
-    public static Vector3 colorTolerance = new(0.1f, 0.1f, 0.1f);
+    static Vector3 colorTolerance = new(0.1f, 0.1f, 0.1f);
 
     [SerializeField]
     RawImage cameraImage;
