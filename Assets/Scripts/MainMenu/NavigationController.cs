@@ -114,7 +114,7 @@ public class NavigationController : MonoBehaviour
     {
         WebCamProcessor.ShouldRun = true;
         ControllerManager.SelectedController = FaceDetectionController.Instance;
-        InputThumbnailManager.SelectedThumbnails = ControllerThumbnailFactory.Instance;
+        InputThumbnailManager.SelectedThumbnails = CameraThumbnailFactory.Instance;
         SceneManager.LoadScene("GameLevel");
     }
 
@@ -122,7 +122,7 @@ public class NavigationController : MonoBehaviour
     {
         WebCamProcessor.ShouldRun = true;
         ControllerManager.SelectedController = ColorDetectionController.Instance;
-        InputThumbnailManager.SelectedThumbnails = ControllerThumbnailFactory.Instance;
+        InputThumbnailManager.SelectedThumbnails = CameraThumbnailFactory.Instance;
         SceneManager.LoadScene("GameLevel");
     }
 }
