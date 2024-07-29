@@ -49,8 +49,9 @@ public class WebCamProcessor : WebCamera
             Point duckCoords = new(0, FaceDetectionController.Instance.DuckThreshold);
             OpenCvSharp.Rect jumpLine = new(jumpCoords, new(Image.Width, 1));
             OpenCvSharp.Rect duckLine = new(duckCoords, new(Image.Width, 1));
-            Image.Rectangle(jumpLine, new Scalar(250, 16, 242), 2);
-            Image.Rectangle(duckLine, new Scalar(250, 239, 16), 2);
+            // COLORS ARE NOT RGB, THEY ARE BGR
+            Image.Rectangle(jumpLine, new Scalar(242, 16, 250), 2);
+            Image.Rectangle(duckLine, new Scalar(16, 239, 250), 2);
         }
 
         if (output == null)
