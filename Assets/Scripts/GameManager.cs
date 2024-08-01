@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     HUDUpdater hudUpdater;
     [SerializeField]
     BackgroundManager backgroundManager;
+    [SerializeField]
+    MainLevelHUDActions mainLevelHUDActions;
 
     public static IPlayerController PlayerController { get; set; }
 
@@ -47,11 +49,11 @@ public class GameManager : MonoBehaviour
     {
         if (IsFinished && PlayerController.WantsToRestart())
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            mainLevelHUDActions.PlayAgain();
         }
         if (IsFinished && PlayerController.WantsToGoMainMenu())
         {
-            SceneManager.LoadScene("MainMenu");
+            mainLevelHUDActions.MainMenu();
         }
     }
 

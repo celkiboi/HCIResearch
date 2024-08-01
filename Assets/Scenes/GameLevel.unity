@@ -155,6 +155,7 @@ MonoBehaviour:
   obstacleSpawner: {fileID: 954352976}
   hudUpdater: {fileID: 888166104}
   backgroundManager: {fileID: 1286555685}
+  mainLevelHUDActions: {fileID: 888166105}
   ticksPerPoint: 5
   GameScoreSpeedModifier: 50
   BaseGameSpeed: 5
@@ -3334,7 +3335,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a22649fa80e2f4dbe0d9af3993ec6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  faces: []
   webCamProcessor: {fileID: 1224662517}
 --- !u!4 &1619343485
 Transform:
@@ -3894,8 +3894,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36639e490a4a7b54c853cb85625a0ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WantedColor: {r: 1, g: 0.8862745, b: 0.59607846, a: 1}
-  colorTolerance: {x: 0.1, y: 0.1, z: 0.1}
   cameraImage: {fileID: 800398065}
   detectTimesPerSecond: 10
   webCamProcessor: {fileID: 1224662517}
