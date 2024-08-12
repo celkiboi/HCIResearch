@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class KeyboardPlayerController : IPlayerController
     public static KeyboardPlayerController Instance = new();
 
     private KeyboardPlayerController() { }
+
+    public Action<int> UpdateHighScore => HighScores.Instance.AddKeyboardScore;
 
     public bool WantsToDuck()
     {

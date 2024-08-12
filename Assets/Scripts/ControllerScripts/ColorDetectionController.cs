@@ -14,6 +14,9 @@ public class ColorDetectionController : IPlayerController
     { }
     public int DuckThreshold { get; private set; } = 280;
     public int JumpThreshold { get; private set; } = 160;
+
+    public Action<int> UpdateHighScore => HighScores.Instance.AddColorScore;
+
     public void SetThreshold(int duck, int jump)
     {
         JumpThreshold = jump;

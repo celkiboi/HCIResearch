@@ -66,7 +66,11 @@ public class GameManager : MonoBehaviour
             Score++;
         }
         if (IsFinished)
+        {
             Time.timeScale = 0;
+            ControllerManager.SelectedController.UpdateHighScore(Score);
+        }
+            
     }
 
     public void AddToScore(int value)

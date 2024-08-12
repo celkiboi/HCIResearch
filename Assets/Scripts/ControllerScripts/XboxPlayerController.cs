@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class XboxPlayerController : IPlayerController
     private XboxPlayerController() { }
 
     readonly float deadzone = 0.2f;
+
+    public Action<int> UpdateHighScore => HighScores.Instance.AddControllerScore;
 
     public bool WantsToDuck()
     {

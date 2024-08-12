@@ -23,6 +23,9 @@ public class NavigationController : MonoBehaviour
     [SerializeField]
     ThresholdCameraSelector thresholdSelector;
 
+    [SerializeField]
+    ScoreMenuManager scoreManager;
+
     GameSettingsFile gameSettingsFile = GameSettingsFile.Instance;
 
     public void Start()
@@ -33,6 +36,7 @@ public class NavigationController : MonoBehaviour
         info.gameObject.SetActive(true);
         selectColor.gameObject.SetActive(false);
         setThreshold.gameObject.SetActive(false);
+        scoreManager.gameObject.SetActive(false);
         colorSelector.Stop();
         thresholdSelector.Stop();
     }
@@ -45,6 +49,7 @@ public class NavigationController : MonoBehaviour
         info.gameObject.SetActive(true);
         selectColor.gameObject.SetActive(false);
         setThreshold.gameObject.SetActive(false);
+        scoreManager.gameObject.SetActive(false);
         colorSelector.Stop();
         thresholdSelector.Stop();
     }
@@ -56,6 +61,7 @@ public class NavigationController : MonoBehaviour
         settings.gameObject.SetActive(true);
         info.gameObject.SetActive(false);
         selectColor.gameObject.SetActive(false);
+        scoreManager.gameObject.SetActive(false);
         setThreshold.gameObject.SetActive(false);
         colorSelector.Stop();
         thresholdSelector.Stop();
@@ -69,6 +75,7 @@ public class NavigationController : MonoBehaviour
         info.gameObject.SetActive(true);
         selectColor.gameObject.SetActive(false);
         setThreshold.gameObject.SetActive(false);
+        scoreManager.gameObject.SetActive(false);
         colorSelector.Stop();
         thresholdSelector.Stop();
         GameSettingsFile.Instance.Save();
@@ -81,6 +88,7 @@ public class NavigationController : MonoBehaviour
         settings.gameObject.SetActive(false);
         info.gameObject.SetActive(false);
         selectColor.gameObject.SetActive(true);
+        scoreManager.gameObject.SetActive(false);
         thresholdSelector.Stop();
         colorSelector.KickStart();
     }
@@ -93,8 +101,22 @@ public class NavigationController : MonoBehaviour
         info.gameObject.SetActive(false);
         selectColor.gameObject.SetActive(false);
         setThreshold.gameObject.SetActive(true);
+        scoreManager.gameObject.SetActive(false);
         colorSelector.Stop();
         thresholdSelector.KickStart();
+    }
+
+    public void GoHighScores()
+    {
+        initial.gameObject.SetActive(false);
+        input.gameObject.SetActive(false);
+        settings.gameObject.SetActive(false);
+        info.gameObject.SetActive(false);
+        selectColor.gameObject.SetActive(false);
+        setThreshold.gameObject.SetActive(false);
+        scoreManager.gameObject.SetActive(true);
+        colorSelector.Stop();
+        thresholdSelector.Stop();
     }
 
     public void PlayKeyboard()

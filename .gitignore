@@ -70,3 +70,6 @@ sysinfo.txt
 
 # settings
 settings.json
+
+# high score
+highScores.json
