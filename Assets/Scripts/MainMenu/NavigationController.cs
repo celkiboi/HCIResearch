@@ -17,6 +17,10 @@ public class NavigationController : MonoBehaviour
     Canvas selectColor;
     [SerializeField]
     Canvas setThreshold;
+    [SerializeField]
+    Canvas faceDetectionSettings;
+    [SerializeField]
+    Canvas faceMovementSettings;
 
     [SerializeField]
     MenuCameraColorSelector colorSelector;
@@ -26,7 +30,11 @@ public class NavigationController : MonoBehaviour
     [SerializeField]
     ScoreMenuManager scoreManager;
 
-    GameSettingsFile gameSettingsFile = GameSettingsFile.Instance;
+    //need to call this, as Unity/.NET optimizes the singleton to lazy instantiation
+    // prevents crash/not reading the settings file in time
+    #pragma warning disable IDE0052 // Remove unread private members
+    readonly GameSettingsFile gameSettingsFile = GameSettingsFile.Instance;
+    #pragma warning restore IDE0052
 
     public void Start()
     {
@@ -37,6 +45,8 @@ public class NavigationController : MonoBehaviour
         selectColor.gameObject.SetActive(false);
         setThreshold.gameObject.SetActive(false);
         scoreManager.gameObject.SetActive(false);
+        faceDetectionSettings.gameObject.SetActive(false);
+        faceMovementSettings.gameObject.SetActive(false);
         colorSelector.Stop();
         thresholdSelector.Stop();
     }
@@ -50,6 +60,8 @@ public class NavigationController : MonoBehaviour
         selectColor.gameObject.SetActive(false);
         setThreshold.gameObject.SetActive(false);
         scoreManager.gameObject.SetActive(false);
+        faceDetectionSettings.gameObject.SetActive(false);
+        faceMovementSettings.gameObject.SetActive(false);
         colorSelector.Stop();
         thresholdSelector.Stop();
     }
@@ -63,6 +75,8 @@ public class NavigationController : MonoBehaviour
         selectColor.gameObject.SetActive(false);
         scoreManager.gameObject.SetActive(false);
         setThreshold.gameObject.SetActive(false);
+        faceDetectionSettings.gameObject.SetActive(false);
+        faceMovementSettings.gameObject.SetActive(false);
         colorSelector.Stop();
         thresholdSelector.Stop();
     }
@@ -76,6 +90,8 @@ public class NavigationController : MonoBehaviour
         selectColor.gameObject.SetActive(false);
         setThreshold.gameObject.SetActive(false);
         scoreManager.gameObject.SetActive(false);
+        faceDetectionSettings.gameObject.SetActive(false);
+        faceMovementSettings.gameObject.SetActive(false);
         colorSelector.Stop();
         thresholdSelector.Stop();
         GameSettingsFile.Instance.Save();
@@ -89,6 +105,8 @@ public class NavigationController : MonoBehaviour
         info.gameObject.SetActive(false);
         selectColor.gameObject.SetActive(true);
         scoreManager.gameObject.SetActive(false);
+        faceDetectionSettings.gameObject.SetActive(false);
+        faceMovementSettings.gameObject.SetActive(false);
         thresholdSelector.Stop();
         colorSelector.KickStart();
     }
@@ -102,6 +120,8 @@ public class NavigationController : MonoBehaviour
         selectColor.gameObject.SetActive(false);
         setThreshold.gameObject.SetActive(true);
         scoreManager.gameObject.SetActive(false);
+        faceDetectionSettings.gameObject.SetActive(false);
+        faceMovementSettings.gameObject.SetActive(false);
         colorSelector.Stop();
         thresholdSelector.KickStart();
     }
@@ -114,7 +134,39 @@ public class NavigationController : MonoBehaviour
         info.gameObject.SetActive(false);
         selectColor.gameObject.SetActive(false);
         setThreshold.gameObject.SetActive(false);
+        faceDetectionSettings.gameObject.SetActive(false);
         scoreManager.gameObject.SetActive(true);
+        faceMovementSettings.gameObject.SetActive(false);
+        colorSelector.Stop();
+        thresholdSelector.Stop();
+    }
+
+    public void GoFaceDetectionSettings()
+    {
+        initial.gameObject.SetActive(false);
+        input.gameObject.SetActive(false);
+        settings.gameObject.SetActive(false);
+        info.gameObject.SetActive(false);
+        selectColor.gameObject.SetActive(false);
+        setThreshold.gameObject.SetActive(false);
+        scoreManager.gameObject.SetActive(false);
+        faceDetectionSettings.gameObject.SetActive(true);
+        faceMovementSettings.gameObject.SetActive(false);
+        colorSelector.Stop();
+        thresholdSelector.Stop();
+    }
+
+    public void GoFaceMovementSettings()
+    {
+        initial.gameObject.SetActive(false);
+        input.gameObject.SetActive(false);
+        settings.gameObject.SetActive(false);
+        info.gameObject.SetActive(false);
+        selectColor.gameObject.SetActive(false);
+        setThreshold.gameObject.SetActive(false);
+        scoreManager.gameObject.SetActive(false);
+        faceDetectionSettings.gameObject.SetActive(false);
+        faceMovementSettings.gameObject.SetActive(true);
         colorSelector.Stop();
         thresholdSelector.Stop();
     }

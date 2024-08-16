@@ -25,6 +25,7 @@ using UnityEngine;
     will be restored to their states. Upon visiting Initial game menu
     settings.json will be saved.
 */
+#pragma warning disable IDE0052 // Remove unread private members
 
 [Serializable]
 public class GameSettingsFile
@@ -42,14 +43,29 @@ public class GameSettingsFile
     int faceDetectionFrequency = 18;
     [SerializeField]
     int colorDetectionPixelsToSkip = 1;
+    [SerializeField]
+    int faceDetectionNeighbourCount = 4;
+    [SerializeField]
+    float faceDetectionScale = 1.3f;
 
     //used in MainMenu/MenuCameraColorSelector.cs
     [SerializeField]
     Color selectedColor = new(0, 0, 0);
 
+    //used in ControllerScripts/FaceMovementController.cs
+    [SerializeField]
+    int faceMovementSampleAmount = 400;
+    [SerializeField]
+    int faceMovementOutlierThreshold = 20;
+    [SerializeField]
+    int faceMovementOutlierSampleCount = 50;
+    [SerializeField]
+    int faceMovementThreshold = 100;
+
     //used in MotionScripts/ColorDetector.cs
     [SerializeField]
     Vector3 colorTolerance = new(0.1f, 0.1f, 0.1f);
+    #pragma warning restore IDE0052 // Remove unread private members
 
     public static GameSettingsFile Instance { get; private set; } = LoadOrCreate();
 

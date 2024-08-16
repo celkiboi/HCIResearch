@@ -14,11 +14,16 @@ public class FaceMovementController : IPlayerController
     private FaceMovementController() 
     { }
 
-    public int Difference { get; private set; } = 100;
-    Queue<int> heights = new();
-    int queueLength = 400;
-    int outlierThreshold = 30;
-    int outlierSampleCount = 35;
+    public int HeightDifferenceThreshold { get => heightDifferenceThreshold; set => heightDifferenceThreshold = value; }
+    readonly Queue<int> heights = new();
+    [Settings("faceMovementSampleAmount")]
+    static int heightSampleAmount = 400;
+    [Settings("faceMovementOutlierThreshold")]
+    static int outlierThreshold = 20;
+    [Settings("faceMovementOutlierSampleCount")]
+    static int outlierSampleCount = 50;
+    [Settings("faceMovementThreshold")]
+    static private int heightDifferenceThreshold = 100;
 
     private enum DetectedMovement { NoMovement = 0, Upwards = 1, Downwards = 2}
     DetectedMovement latestMovement = DetectedMovement.NoMovement;
@@ -27,6 +32,9 @@ public class FaceMovementController : IPlayerController
 
     public Action<int> UpdateHighScore => HighScores.Instance.AddFaceMovementScore;
 
+    public int HeightSampleAmount { get => heightSampleAmount; set => heightSampleAmount = value; }
+    public int OutlierThreshold { get => outlierThreshold; set => outlierThreshold = value; }
+    public int OutlierSampleCount { get => outlierSampleCount; set => outlierSampleCount = value; }
 
     public bool WantsToDuck()
     {
@@ -77,7 +85,7 @@ public class FaceMovementController : IPlayerController
 
     void FilterQueue()
     {
-        if (heights.Count > queueLength)
+        if (heights.Count > HeightSampleAmount)
             heights.Dequeue();
     }
 
@@ -92,7 +100,7 @@ public class FaceMovementController : IPlayerController
     private void CheckMovement()
     {
         PushIntoQueue();
-        if (heights.Count < queueLength)
+        if (heights.Count < HeightSampleAmount)
         {
             latestMovement = DetectedMovement.NoMovement;
             return;
@@ -102,7 +110,7 @@ public class FaceMovementController : IPlayerController
         RemoveOutliers(heightsList);
         int highest = heightsList.Max();
         int lowest = heightsList.Min();
-        if (highest - lowest < Difference)
+        if (highest - lowest < HeightDifferenceThreshold)
         {
             latestMovement = DetectedMovement.NoMovement;
             return;
@@ -119,24 +127,24 @@ public class FaceMovementController : IPlayerController
 
     private void RemoveOutliers(List<int> heights)
     {
-        for (int i = outlierSampleCount; i < heights.Count - outlierSampleCount; i++)
+        for (int i = OutlierSampleCount; i < heights.Count - OutlierSampleCount; i++)
         {
             int beforeSampleSum = 0;
             int afterSampleSum = 0;
-            for (int j = i - outlierSampleCount; j < i + outlierSampleCount; j++)
+            for (int j = i - OutlierSampleCount; j < i + OutlierSampleCount; j++)
             {
                 if (j == i) continue;
                 if (j < i) beforeSampleSum += heights[j];
                 else afterSampleSum += heights[j];
             }
-            int beforeSampleAverage = beforeSampleSum / outlierSampleCount;
-            int afterSampleAverage = afterSampleSum / outlierSampleCount;
+            int beforeSampleAverage = beforeSampleSum / OutlierSampleCount;
+            int afterSampleAverage = afterSampleSum / OutlierSampleCount;
             // NOT an outlier, just a product of movement
-            if (Mathf.Abs(beforeSampleAverage - afterSampleAverage) > Difference) 
+            if (Mathf.Abs(beforeSampleAverage - afterSampleAverage) > HeightDifferenceThreshold) 
                 continue;
 
             int average = (beforeSampleAverage + afterSampleAverage) / 2;
-            if (Mathf.Abs(heights[i] - average) > outlierThreshold)
+            if (Mathf.Abs(heights[i] - average) > OutlierThreshold)
             {
                 heights[i] = average;
             }
