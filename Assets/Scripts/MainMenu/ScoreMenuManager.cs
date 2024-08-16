@@ -25,7 +25,7 @@ public class ScoreMenuManager : MonoBehaviour
 
     public void NextScoreType()
     {
-        if (currentlyDisplayedScoreType == ScoreType.color)
+        if (currentlyDisplayedScoreType == ScoreType.faceMovement)
             currentlyDisplayedScoreType = ScoreType.keyboard;
         else
             currentlyDisplayedScoreType++;
@@ -35,7 +35,7 @@ public class ScoreMenuManager : MonoBehaviour
     public void PreviousScoreType()
     {
         if (currentlyDisplayedScoreType == ScoreType.keyboard)
-            currentlyDisplayedScoreType = ScoreType.color;
+            currentlyDisplayedScoreType = ScoreType.faceMovement;
         else
             currentlyDisplayedScoreType--;
         UpdateDisplayedText();
@@ -85,8 +85,9 @@ public class ScoreMenuManager : MonoBehaviour
         {
             ScoreType.keyboard => scores.KeyboardScores,
             ScoreType.controller => scores.ControllerScores,
-            ScoreType.face => scores.FaceScores,
+            ScoreType.faceHeight => scores.FaceHeightScores,
             ScoreType.color => scores.ColorScores,
+            ScoreType.faceMovement => scores.FaceMovementScores,
             _ => throw new ArgumentException("Currently displayed score value does not match any cases in enum"),
         };
     }

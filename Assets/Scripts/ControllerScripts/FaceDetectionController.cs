@@ -13,7 +13,7 @@ public class FaceDetectionController : IPlayerController
     public int DuckThreshold { get; private set; } = 280;
     public int JumpThreshold { get; private set; } = 160;
 
-    public Action<int> UpdateHighScore => HighScores.Instance.AddFaceScore;
+    public Action<int> UpdateHighScore => HighScores.Instance.AddFaceHeightScore;
 
     public void SetThreshold(int duck, int jump)
     {

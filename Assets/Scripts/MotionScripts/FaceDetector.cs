@@ -16,7 +16,12 @@ public class FaceDetector : MonoBehaviour
 
     void Start()
     {
-        if (!WebCamProcessor.ShouldRun || ControllerManager.SelectedController != FaceDetectionController.Instance)
+        if (!WebCamProcessor.ShouldRun || 
+            (
+                !(ControllerManager.SelectedController == FaceDetectionController.Instance) 
+                && !(ControllerManager.SelectedController == FaceMovementController.Instance)
+            )
+        )
         {
             this.gameObject.SetActive(false);
             return;
@@ -38,7 +43,7 @@ public class FaceDetector : MonoBehaviour
             yield return new WaitForSeconds(1.0f / timesPerSecond);
             Mat frame = webCamProcessor.Image;
             if (frame != null) 
-                Faces = cascade.DetectMultiScale(frame, 1.1, 2, HaarDetectionType.ScaleImage);
+                Faces = cascade.DetectMultiScale(frame, 1.3, 4, HaarDetectionType.ScaleImage);
             if (Faces.Length >= 1)
                 Height = Faces[0].Center.Y;
         }

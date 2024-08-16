@@ -14,14 +14,17 @@ public class HighScores
     [SerializeField]
     List<int> controllerScores;
     [SerializeField]
-    List<int> faceScores;
+    List<int> faceHeightScores;
     [SerializeField]
     List<int> colorScores;
+    [SerializeField]
+    List<int> faceMovementScores;
 
     public IList<int> KeyboardScores { get { return keyboardScores.AsReadOnly(); } }
     public IList<int> ControllerScores { get { return controllerScores.AsReadOnly(); } }
-    public IList<int> FaceScores { get { return faceScores.AsReadOnly(); } }
+    public IList<int> FaceHeightScores { get { return faceHeightScores.AsReadOnly(); } }
     public IList<int> ColorScores { get { return colorScores.AsReadOnly(); } }
+    public IList<int> FaceMovementScores { get { return faceMovementScores.AsReadOnly(); } }
 
     public static HighScores Instance = LoadOrCreate();
 
@@ -29,8 +32,9 @@ public class HighScores
     {
         keyboardScores = new();
         controllerScores = new();
-        faceScores = new();
+        faceHeightScores = new();
         colorScores = new();
+        faceMovementScores = new();
     }
 
     static HighScores LoadOrCreate()
@@ -56,15 +60,21 @@ public class HighScores
         Save();
     }
 
-    public void AddFaceScore(int score)
+    public void AddFaceHeightScore(int score)
     {
-        faceScores.Add(score);
+        faceHeightScores.Add(score);
         Save();
     }
 
     public void AddColorScore(int score)
     {
         colorScores.Add(score);
+        Save();
+    }
+    
+    public void AddFaceMovementScore(int score)
+    {
+        faceMovementScores.Add(score);
         Save();
     }
 
