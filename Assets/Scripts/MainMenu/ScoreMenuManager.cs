@@ -43,7 +43,17 @@ public class ScoreMenuManager : MonoBehaviour
 
     void UpdateDisplayedText()
     {
-        currentlyDisplayedScoreTypeText.text = $"Score info for {currentlyDisplayedScoreType} method";
+        string currentMethodName = currentlyDisplayedScoreType switch
+        {
+            ScoreType.keyboard => "keyboard",
+            ScoreType.controller => "controller",
+            ScoreType.faceHeight => "face height",
+            ScoreType.color => "color",
+            ScoreType.faceMovement => "face movement",
+            _ => throw new ArgumentException("Currently displayed score value does not match any cases in enum")
+        };
+
+        currentlyDisplayedScoreTypeText.text = $"Score info for {currentMethodName} method";
 
         IList<int> scores = GetScore();
         if (scores.Count == 0)
