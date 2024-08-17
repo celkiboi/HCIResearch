@@ -78,6 +78,6 @@ public static class Extensions
 
     public static GameObject GetParent(this GameObject child) 
     { 
-        return child.gameObject.transform.parent.gameObject;
+        return child.transform.parent.gameObject;
     }
 }
