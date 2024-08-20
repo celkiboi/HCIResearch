@@ -190,7 +190,7 @@ public class NavigationController : MonoBehaviour
     public void PlayFaceHeightDetection()
     {
         WebCamProcessor.ShouldRun = true;
-        ControllerManager.SelectedController = FaceDetectionController.Instance;
+        ControllerManager.SelectedController = FaceHeightController.Instance;
         InputThumbnailManager.SelectedThumbnails = CameraThumbnailFactory.Instance;
         SceneManager.LoadScene("GameLevel");
     }

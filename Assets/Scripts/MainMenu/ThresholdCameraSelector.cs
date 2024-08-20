@@ -100,25 +100,25 @@ public class ThresholdCameraSelector : WebCamera
     public void OnJumpThresholdChanged(float value)
     {
         jumpThreshold = (int)value;
-        FaceDetectionController.Instance.SetThreshold(
-            duck: FaceDetectionController.Instance.DuckThreshold,
+        FaceHeightController.Instance.SetThreshold(
+            duck: FaceHeightController.Instance.DuckThreshold,
             jump: (int)value);
         ColorDetectionController.Instance.SetThreshold(
-            duck: FaceDetectionController.Instance.DuckThreshold,
+            duck: FaceHeightController.Instance.DuckThreshold,
             jump: (int)value);
-        jumpThresholdText.text = FaceDetectionController.Instance.JumpThreshold.ToString();
+        jumpThresholdText.text = FaceHeightController.Instance.JumpThreshold.ToString();
     }
 
     public void OnDuckThresholdChanged(float value)
     {
         duckThreshold = (int)value;
-        FaceDetectionController.Instance.SetThreshold(
-            jump: FaceDetectionController.Instance.JumpThreshold,
+        FaceHeightController.Instance.SetThreshold(
+            jump: FaceHeightController.Instance.JumpThreshold,
             duck: (int)value);
         ColorDetectionController.Instance.SetThreshold(
-            jump: FaceDetectionController.Instance.JumpThreshold,
+            jump: FaceHeightController.Instance.JumpThreshold,
             duck: (int)value);
-        duckThresholdText.text = FaceDetectionController.Instance.DuckThreshold.ToString();
+        duckThresholdText.text = FaceHeightController.Instance.DuckThreshold.ToString();
     }
 
     public void ToggleThresholdBarsDisplay(bool value)

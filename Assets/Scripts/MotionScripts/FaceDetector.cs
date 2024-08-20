@@ -18,7 +18,7 @@ public class FaceDetector : MonoBehaviour
     {
         if (!WebCamProcessor.ShouldRun || 
             (
-                !(ControllerManager.SelectedController == FaceDetectionController.Instance) 
+                !(ControllerManager.SelectedController == FaceHeightController.Instance) 
                 && !(ControllerManager.SelectedController == FaceMovementController.Instance)
             )
         )

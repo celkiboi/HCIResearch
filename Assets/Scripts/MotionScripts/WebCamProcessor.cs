@@ -30,7 +30,7 @@ public class WebCamProcessor : WebCamera
     {
         Image = OpenCvSharp.Unity.TextureToMat(input);
 
-        if (ControllerManager.SelectedController == FaceDetectionController.Instance 
+        if (ControllerManager.SelectedController == FaceHeightController.Instance 
             || ControllerManager.SelectedController == FaceMovementController.Instance)
         {
             if (faceDetector.Faces.Length > 0)
@@ -47,8 +47,8 @@ public class WebCamProcessor : WebCamera
         if (ThresholdCameraSelector.DisplayThresholdBars 
             &&  ControllerManager.SelectedController != FaceMovementController.Instance)
         {
-            Point jumpCoords = new(0, FaceDetectionController.Instance.JumpThreshold);
-            Point duckCoords = new(0, FaceDetectionController.Instance.DuckThreshold);
+            Point jumpCoords = new(0, FaceHeightController.Instance.JumpThreshold);
+            Point duckCoords = new(0, FaceHeightController.Instance.DuckThreshold);
             OpenCvSharp.Rect jumpLine = new(jumpCoords, new(Image.Width, 1));
             OpenCvSharp.Rect duckLine = new(duckCoords, new(Image.Width, 1));
             // COLORS ARE NOT RGB, THEY ARE BGR

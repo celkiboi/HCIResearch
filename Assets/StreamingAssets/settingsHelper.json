@@ -1,7 +1,7 @@
 {
     "faceDetectionFrequency": "A higher frequency yields better detection due to more scans but requires more computer performance.",
     "faceDetectionNeighbours": "A higher number reduces the amount of false positives but may result in fewer detections.",
-    "faceDetectionScale": "A higher number improves computer performance but results in fewer detections of smaller objects.",
+    "faceDetectionScale": "A higher number improves computer performance but results in fewer detections of smaller objects. Higher number also reduces false positives.",
     "faceMovementSampleAmount": "More samples allow slower movements to be detected.",
     "faceMovementThreshold": "A higher number means that a longer movement is needed to register but reduces the chance of false positives.",
     "faceMovementErrorThreshold": "A lower number increases the likelihood of detecting a movement jerk while a higher number can overcorrect legitimate movements.",

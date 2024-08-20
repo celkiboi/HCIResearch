@@ -3,11 +3,11 @@ using System;
 using System.IO;
 using UnityEngine;
 
-public class FaceDetectionController : IPlayerController
+public class FaceHeightController : IPlayerController
 {
-    public static FaceDetectionController Instance = new();
+    public static FaceHeightController Instance = new();
 
-    private FaceDetectionController()
+    private FaceHeightController()
     { }
 
     public int DuckThreshold { get; private set; } = 280;
